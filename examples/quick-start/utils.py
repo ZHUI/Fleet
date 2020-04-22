@@ -4,6 +4,8 @@ import time
 import numpy as np
 import paddle.dataset.mnist
 
+gpu_id = int(os.getenv("FLAGS_selected_gpus", "0"))
+np.random.seed(gpu_id)
 
 def gen_data_fake():
     return {"x": np.random.random(size=(128, 784)).astype('float32'),
@@ -44,8 +46,26 @@ reader_test = paddle.dataset.mnist.test()
 iters = data_iter(reader_train)
 iters_test = data_iter(reader_test)
 
+def iters_shuffle():
+    all_data =  []
+    for data in iters:
+        all_data.append(data)
+    print(len(all_data))
+    idx =  np.random.permutation(len(all_data))
+    print(idx[0:20])
+    global run_index
+    run_index = 0
+    def get():
+        global run_index
+        while True:
+            run_index +=1
+            yield all_data[idx[run_index]]
+    return get
+
+shuff = ( iters_shuffle() )()
+
 def gen_data():
-    return iters.__next__()
+    return shuff.__next__()
 
 def gen_test():
     for data in iters_test:
