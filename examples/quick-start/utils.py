@@ -6,6 +6,9 @@ import paddle.dataset.mnist
 
 gpu_id = int(os.getenv("FLAGS_selected_gpus", "0"))
 np.random.seed(gpu_id)
+print("=========================================")
+print("This for gpu {}".format(gpu_id))
+print("=========================================")
 
 def gen_data_fake():
     return {"x": np.random.random(size=(128, 784)).astype('float32'),
@@ -51,15 +54,15 @@ def iters_shuffle():
     for data in iters:
         all_data.append(data)
     print(len(all_data))
-    idx =  np.random.permutation(len(all_data))
-    print(idx[0:20])
+    #idx =  np.random.permutation(len(all_data))
+    #print(idx[0:20])
     global run_index
     run_index = 0
     def get():
         global run_index
         while True:
             run_index +=1
-            yield all_data[idx[run_index]]
+            yield all_data[(run_index*8+gpu_id) % len(all_data)]
     return get
 
 shuff = ( iters_shuffle() )()

@@ -45,14 +45,16 @@ exe.run(fluid.default_startup_program())
 step = 301
 loss = 1.0
 for i in range(step):
-    cost_val = exe.run(
+    data = gen_data()
+    cost_val, pre_val = exe.run(
         program=train_prog,
-        feed=gen_data(),
-        fetch_list=[cost.name]
+        feed=data,
+        fetch_list=[cost.name, pre.name]
     )
+    acc = np.sum(np.argmax(pre_val, axis=1).reshape(-1) == data["y"].reshape(-1)) / len(data['y'])
     loss = 0.9 * loss + 0.1 * cost_val[0]
-    print("worker_index: %d, step%d\tsmooth%f\tcost = %f" %
-        (fleet.worker_index(), i, loss, cost_val[0]))
+    print("worker_index: %d, step=%d\tsmooth = %f\tcost = %f\tacc = %f" %
+        (fleet.worker_index(), i, loss, cost_val[0], acc))
 
 
 test_loss = 0.0

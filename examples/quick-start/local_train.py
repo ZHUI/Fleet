@@ -32,10 +32,12 @@ exe.run(fluid.default_startup_program())
 step = 301
 loss = 1.0
 for i in range(step):
-    cost_val = exe.run(feed=gen_data(),
-                       fetch_list=[cost.name])
+    data = gen_data()
+    cost_val, pre_val = exe.run(feed=data,
+                       fetch_list=[cost.name, pre.name])
+    acc = np.sum(np.argmax(pre_val, axis=1).reshape(-1) == data["y"].reshape(-1)) / len(data['y'])
     loss = 0.9*loss + 0.1 * cost_val[0]
-    print("step%d\tsmmoth%f\tcost=%f" % (i, loss, cost_val[0]))
+    print("step=%d\tsmmoth=%f\tcost=%f\tacc:%f" % (i, loss, cost_val[0], acc))
 
 test_loss = 0.0
 acc = 0
