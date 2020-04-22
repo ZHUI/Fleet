@@ -2,7 +2,51 @@ import os
 import sys
 import time
 import numpy as np
+import paddle.dataset.mnist
 
-def gen_data():
+
+def gen_data_fake():
+    return {"x": np.random.random(size=(128, 784)).astype('float32'),
+            "y": np.random.randint(2, size=(128, 1)).astype('int64')}
+
+
+def gen_data_bak():
     return {"x": np.random.random(size=(128, 32)).astype('float32'),
             "y": np.random.randint(2, size=(128, 1)).astype('int64')}
+
+def gen_datai_2():
+    x = np.random.random(size=(128, 32)).astype('float32')
+    return {"x": x,
+            "y": (np.sum(x[:,0:16], axis=1)>10).astype('int64')}
+
+def data_iter(reader):
+    bs = 64
+    count = 1
+    data = []
+    label = []
+    for l in reader():
+        if count % bs ==0:
+            # print(np.array(data).astype("float32"))
+            x = np.array(data).astype("float32").reshape((-1,784))
+            y = np.array(label).astype('int64').reshape(-1,1)
+            yield {"x":x, "y": y}
+            data = []
+            label = []
+        #print(type(l[0]), l[0].shape)
+        data += list(l[0])
+        label.append(l[1])
+        count += 1
+
+
+reader_train = paddle.dataset.mnist.train()
+reader_test = paddle.dataset.mnist.test()
+
+iters = data_iter(reader_train)
+iters_test = data_iter(reader_test)
+
+def gen_data():
+    return iters.__next__()
+
+def gen_test():
+    for data in iters_test:
+        yield data

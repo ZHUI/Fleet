@@ -13,10 +13,10 @@
 # limitations under the License.
 import paddle.fluid as fluid
 
-def mlp(input_x, input_y, hid_dim=128, label_dim=2):
-    fc_1 = fluid.layers.fc(input=input_x, size=hid_dim, act='tanh')
-    fc_2 = fluid.layers.fc(input=fc_1, size=hid_dim, act='tanh')
+def mlp(input_x, input_y, hid_dim=784, label_dim=10):
+    fc_1 = fluid.layers.fc(input=input_x, size=hid_dim, act='relu')
+    fc_2 = fluid.layers.fc(input=fc_1, size=hid_dim, act='relu')
     prediction = fluid.layers.fc(input=[fc_2], size=label_dim, act='softmax')
     cost = fluid.layers.cross_entropy(input=prediction, label=input_y)
     avg_cost = fluid.layers.mean(x=cost)
-    return avg_cost
+    return avg_cost, prediction
