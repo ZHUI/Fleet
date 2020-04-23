@@ -1,3 +1,5 @@
+WARNING: Logging before InitGoogleLogging() is written to STDERR
+I0423 14:54:19.662370 37106 init.cc:66] Init commandline: dummy collective_train.py --tryfromenv=check_nan_inf,fast_check_nan_inf,benchmark,eager_delete_scope,fraction_of_cpu_memory_to_use,initial_cpu_memory_in_mb,init_allocated_mem,paddle_num_threads,dist_threadpool_size,eager_delete_tensor_gb,fast_eager_deletion_mode,memory_fraction_of_eager_deletion,allocator_strategy,reader_queue_speed_test_mode,print_sub_graph_dir,pe_profile_fname,inner_op_parallelism,enable_parallel_graph,fuse_parameter_groups_size,multiple_of_cupti_buffer_size,fuse_parameter_memory_size,tracer_profile_fname,dygraph_debug,use_system_allocator,enable_unused_var_check,free_idle_chunk,free_when_no_cache_hit,use_pinned_memory,cpu_deterministic,use_mkldnn,rpc_deadline,rpc_retry_times,rpc_server_profile_path,enable_rpc_profiler,rpc_send_thread_num,rpc_get_thread_num,rpc_prefetch_thread_num,rpc_disable_reuse_port,rpc_retry_bind_port,worker_update_interval_secs,fraction_of_gpu_memory_to_use,initial_gpu_memory_in_mb,reallocate_gpu_memory_in_mb,cudnn_deterministic,enable_cublas_tensor_op_math,conv_workspace_size_limit,cudnn_exhaustive_search,selected_gpus,sync_nccl_allreduce,cudnn_batchnorm_spatial_persistent,gpu_allocator_retry_time,local_exe_sub_scope_limit,gpu_memory_limit_mb 
 =========================================
 This for gpu 3
 =========================================
@@ -8,474 +10,543 @@ API is deprecated since 2.0.0 Please use FleetAPI instead.
 WIKI: https://github.com/PaddlePaddle/Fleet/blob/develop/markdown_doc/transpiler
 
         
-W0422 21:02:45.149256 22313 device_context.cc:237] Please NOTE: device: 3, CUDA Capability: 70, Driver API Version: 10.2, Runtime API Version: 10.0
-W0422 21:02:45.153239 22313 device_context.cc:245] device: 3, cuDNN Version: 7.6.
-I0422 21:02:46.658454 22604 grpc_server.cc:477] Server listening on 127.0.0.1:6173 successful, selected port: 6173
-I0422 21:02:51.585691 22313 rpc_server.cc:28] RPCServer ShutDown 
-W0422 21:02:51.586338 22608 grpc_server.cc:604] CompletionQueue RequestSend shutdown!
-W0422 21:02:51.586345 22610 grpc_server.cc:604] CompletionQueue RequestSend shutdown!
-W0422 21:02:51.586347 22607 grpc_server.cc:604] CompletionQueue RequestSend shutdown!
-W0422 21:02:51.586338 22611 grpc_server.cc:604] CompletionQueue RequestSend shutdown!
-W0422 21:02:51.586341 22609 grpc_server.cc:604] CompletionQueue RequestSend shutdown!
-I0422 21:02:51.588979 22313 parallel_executor.cc:440] The Program will be executed on CUDA using ParallelExecutor, 1 cards are used, so 1 programs are executed in parallel.
-W0422 21:02:52.772817 22313 fuse_all_reduce_op_pass.cc:74] Find all_reduce operators: 6. To make the speed faster, some all_reduce ops are fused during training, after fusion, the number of all_reduce ops is 3.
-I0422 21:02:52.772925 22313 build_strategy.cc:365] SeqOnlyAllReduceOps:1, num_trainers:8
-I0422 21:02:52.773797 22313 parallel_executor.cc:307] Inplace strategy is enabled, when build_strategy.enable_inplace = True
-I0422 21:02:52.774217 22313 parallel_executor.cc:375] Garbage collection strategy is enabled, when FLAGS_eager_delete_tensor_gb = 0
-worker_index: 3, step=0	smooth = 1.135518	cost = 2.355179	acc = 0.078125
-worker_index: 3, step=1	smooth = 1.256181	cost = 2.342152	acc = 0.109375
-worker_index: 3, step=2	smooth = 1.356827	cost = 2.262640	acc = 0.093750
-worker_index: 3, step=3	smooth = 1.442375	cost = 2.212309	acc = 0.250000
-worker_index: 3, step=4	smooth = 1.516350	cost = 2.182117	acc = 0.296875
-worker_index: 3, step=5	smooth = 1.582204	cost = 2.174894	acc = 0.203125
-worker_index: 3, step=6	smooth = 1.629711	cost = 2.057272	acc = 0.328125
-worker_index: 3, step=7	smooth = 1.664958	cost = 1.982182	acc = 0.390625
-worker_index: 3, step=8	smooth = 1.706306	cost = 2.078442	acc = 0.406250
-worker_index: 3, step=9	smooth = 1.721062	cost = 1.853866	acc = 0.515625
-worker_index: 3, step=10	smooth = 1.738193	cost = 1.892372	acc = 0.437500
-worker_index: 3, step=11	smooth = 1.751181	cost = 1.868067	acc = 0.437500
-worker_index: 3, step=12	smooth = 1.761118	cost = 1.850554	acc = 0.468750
-worker_index: 3, step=13	smooth = 1.761575	cost = 1.765687	acc = 0.546875
-worker_index: 3, step=14	smooth = 1.752103	cost = 1.666860	acc = 0.656250
-worker_index: 3, step=15	smooth = 1.750153	cost = 1.732598	acc = 0.515625
-worker_index: 3, step=16	smooth = 1.737708	cost = 1.625705	acc = 0.640625
-worker_index: 3, step=17	smooth = 1.718740	cost = 1.548028	acc = 0.640625
-worker_index: 3, step=18	smooth = 1.703393	cost = 1.565274	acc = 0.656250
-worker_index: 3, step=19	smooth = 1.684462	cost = 1.514081	acc = 0.671875
-worker_index: 3, step=20	smooth = 1.664951	cost = 1.489354	acc = 0.703125
-worker_index: 3, step=21	smooth = 1.650169	cost = 1.517122	acc = 0.687500
-worker_index: 3, step=22	smooth = 1.624029	cost = 1.388771	acc = 0.750000
-worker_index: 3, step=23	smooth = 1.606605	cost = 1.449793	acc = 0.640625
-worker_index: 3, step=24	smooth = 1.591456	cost = 1.455110	acc = 0.656250
-worker_index: 3, step=25	smooth = 1.560274	cost = 1.279643	acc = 0.734375
-worker_index: 3, step=26	smooth = 1.549290	cost = 1.450434	acc = 0.640625
-worker_index: 3, step=27	smooth = 1.538518	cost = 1.441564	acc = 0.640625
-worker_index: 3, step=28	smooth = 1.511501	cost = 1.268352	acc = 0.781250
-worker_index: 3, step=29	smooth = 1.489347	cost = 1.289963	acc = 0.671875
-worker_index: 3, step=30	smooth = 1.468972	cost = 1.285590	acc = 0.718750
-worker_index: 3, step=31	smooth = 1.440370	cost = 1.182958	acc = 0.828125
-worker_index: 3, step=32	smooth = 1.425018	cost = 1.286848	acc = 0.750000
-worker_index: 3, step=33	smooth = 1.412144	cost = 1.296281	acc = 0.734375
-worker_index: 3, step=34	smooth = 1.381214	cost = 1.102842	acc = 0.843750
-worker_index: 3, step=35	smooth = 1.368309	cost = 1.252159	acc = 0.734375
-worker_index: 3, step=36	smooth = 1.357065	cost = 1.255876	acc = 0.718750
-worker_index: 3, step=37	smooth = 1.327828	cost = 1.064695	acc = 0.765625
-worker_index: 3, step=38	smooth = 1.323723	cost = 1.286775	acc = 0.671875
-worker_index: 3, step=39	smooth = 1.297199	cost = 1.058486	acc = 0.750000
-worker_index: 3, step=40	smooth = 1.273968	cost = 1.064886	acc = 0.843750
-worker_index: 3, step=41	smooth = 1.257824	cost = 1.112532	acc = 0.750000
-worker_index: 3, step=42	smooth = 1.240497	cost = 1.084548	acc = 0.812500
-worker_index: 3, step=43	smooth = 1.229808	cost = 1.133608	acc = 0.718750
-worker_index: 3, step=44	smooth = 1.199718	cost = 0.928908	acc = 0.796875
-worker_index: 3, step=45	smooth = 1.177883	cost = 0.981369	acc = 0.812500
-worker_index: 3, step=46	smooth = 1.177539	cost = 1.174448	acc = 0.671875
-worker_index: 3, step=47	smooth = 1.177452	cost = 1.176666	acc = 0.750000
-worker_index: 3, step=48	smooth = 1.172603	cost = 1.128964	acc = 0.734375
-worker_index: 3, step=49	smooth = 1.165357	cost = 1.100137	acc = 0.765625
-worker_index: 3, step=50	smooth = 1.154358	cost = 1.055369	acc = 0.781250
-worker_index: 3, step=51	smooth = 1.141399	cost = 1.024765	acc = 0.843750
-worker_index: 3, step=52	smooth = 1.127795	cost = 1.005362	acc = 0.796875
-worker_index: 3, step=53	smooth = 1.108320	cost = 0.933040	acc = 0.765625
-worker_index: 3, step=54	smooth = 1.111687	cost = 1.141992	acc = 0.718750
-worker_index: 3, step=55	smooth = 1.091038	cost = 0.905197	acc = 0.843750
-worker_index: 3, step=56	smooth = 1.056927	cost = 0.749926	acc = 0.875000
-worker_index: 3, step=57	smooth = 1.062878	cost = 1.116441	acc = 0.703125
-worker_index: 3, step=58	smooth = 1.059234	cost = 1.026432	acc = 0.718750
-worker_index: 3, step=59	smooth = 1.043700	cost = 0.903895	acc = 0.843750
-worker_index: 3, step=60	smooth = 1.036279	cost = 0.969495	acc = 0.781250
-worker_index: 3, step=61	smooth = 1.029019	cost = 0.963679	acc = 0.781250
-worker_index: 3, step=62	smooth = 1.046111	cost = 1.199936	acc = 0.593750
-worker_index: 3, step=63	smooth = 1.025774	cost = 0.842738	acc = 0.828125
-worker_index: 3, step=64	smooth = 1.011233	cost = 0.880365	acc = 0.796875
-worker_index: 3, step=65	smooth = 0.997770	cost = 0.876603	acc = 0.875000
-worker_index: 3, step=66	smooth = 0.993567	cost = 0.955742	acc = 0.765625
-worker_index: 3, step=67	smooth = 0.969906	cost = 0.756957	acc = 0.875000
-worker_index: 3, step=68	smooth = 0.954809	cost = 0.818932	acc = 0.859375
-worker_index: 3, step=69	smooth = 0.955775	cost = 0.964470	acc = 0.828125
-worker_index: 3, step=70	smooth = 0.930877	cost = 0.706799	acc = 0.859375
-worker_index: 3, step=71	smooth = 0.923605	cost = 0.858152	acc = 0.859375
-worker_index: 3, step=72	smooth = 0.929559	cost = 0.983145	acc = 0.671875
-worker_index: 3, step=73	smooth = 0.911035	cost = 0.744320	acc = 0.890625
-worker_index: 3, step=74	smooth = 0.909338	cost = 0.894070	acc = 0.781250
-worker_index: 3, step=75	smooth = 0.890793	cost = 0.723889	acc = 0.859375
-worker_index: 3, step=76	smooth = 0.883765	cost = 0.820514	acc = 0.828125
-worker_index: 3, step=77	smooth = 0.872134	cost = 0.767455	acc = 0.812500
-worker_index: 3, step=78	smooth = 0.862523	cost = 0.776023	acc = 0.843750
-worker_index: 3, step=79	smooth = 0.844386	cost = 0.681150	acc = 0.890625
-worker_index: 3, step=80	smooth = 0.841989	cost = 0.820420	acc = 0.812500
-worker_index: 3, step=81	smooth = 0.852948	cost = 0.951580	acc = 0.687500
-worker_index: 3, step=82	smooth = 0.845892	cost = 0.782388	acc = 0.859375
-worker_index: 3, step=83	smooth = 0.838811	cost = 0.775084	acc = 0.796875
-worker_index: 3, step=84	smooth = 0.814396	cost = 0.594653	acc = 0.875000
-worker_index: 3, step=85	smooth = 0.820736	cost = 0.877799	acc = 0.765625
-worker_index: 3, step=86	smooth = 0.818351	cost = 0.796888	acc = 0.796875
-worker_index: 3, step=87	smooth = 0.801874	cost = 0.653584	acc = 0.843750
-worker_index: 3, step=88	smooth = 0.797977	cost = 0.762898	acc = 0.906250
-worker_index: 3, step=89	smooth = 0.807047	cost = 0.888678	acc = 0.796875
-worker_index: 3, step=90	smooth = 0.781214	cost = 0.548721	acc = 0.875000
-worker_index: 3, step=91	smooth = 0.786838	cost = 0.837452	acc = 0.859375
-worker_index: 3, step=92	smooth = 0.759858	cost = 0.517033	acc = 0.890625
-worker_index: 3, step=93	smooth = 0.769164	cost = 0.852917	acc = 0.718750
-worker_index: 3, step=94	smooth = 0.750845	cost = 0.585982	acc = 0.828125
-worker_index: 3, step=95	smooth = 0.733281	cost = 0.575198	acc = 0.843750
-worker_index: 3, step=96	smooth = 0.744200	cost = 0.842478	acc = 0.781250
-worker_index: 3, step=97	smooth = 0.772656	cost = 1.028760	acc = 0.765625
-worker_index: 3, step=98	smooth = 0.762087	cost = 0.666965	acc = 0.828125
-worker_index: 3, step=99	smooth = 0.743314	cost = 0.574358	acc = 0.906250
-worker_index: 3, step=100	smooth = 0.737543	cost = 0.685597	acc = 0.812500
-worker_index: 3, step=101	smooth = 0.716386	cost = 0.525979	acc = 0.890625
-worker_index: 3, step=102	smooth = 0.732759	cost = 0.880111	acc = 0.734375
-worker_index: 3, step=103	smooth = 0.722713	cost = 0.632304	acc = 0.859375
-worker_index: 3, step=104	smooth = 0.735900	cost = 0.854576	acc = 0.843750
-worker_index: 3, step=105	smooth = 0.720271	cost = 0.579610	acc = 0.890625
-worker_index: 3, step=106	smooth = 0.728853	cost = 0.806091	acc = 0.781250
-worker_index: 3, step=107	smooth = 0.718516	cost = 0.625489	acc = 0.890625
-worker_index: 3, step=108	smooth = 0.696784	cost = 0.501192	acc = 0.906250
-worker_index: 3, step=109	smooth = 0.676984	cost = 0.498785	acc = 0.937500
-worker_index: 3, step=110	smooth = 0.681769	cost = 0.724839	acc = 0.875000
-worker_index: 3, step=111	smooth = 0.669485	cost = 0.558928	acc = 0.875000
-worker_index: 3, step=112	smooth = 0.667515	cost = 0.649786	acc = 0.890625
-worker_index: 3, step=113	smooth = 0.658540	cost = 0.577764	acc = 0.843750
-worker_index: 3, step=114	smooth = 0.631496	cost = 0.388097	acc = 0.937500
-worker_index: 3, step=115	smooth = 0.610352	cost = 0.420056	acc = 0.984375
-worker_index: 3, step=116	smooth = 0.622802	cost = 0.734855	acc = 0.781250
-worker_index: 3, step=117	smooth = 0.623755	cost = 0.632330	acc = 0.843750
-worker_index: 3, step=118	smooth = 0.614842	cost = 0.534628	acc = 0.875000
-worker_index: 3, step=119	smooth = 0.599833	cost = 0.464751	acc = 0.890625
-worker_index: 3, step=120	smooth = 0.599957	cost = 0.601075	acc = 0.812500
-worker_index: 3, step=121	smooth = 0.600774	cost = 0.608128	acc = 0.843750
-worker_index: 3, step=122	smooth = 0.595144	cost = 0.544466	acc = 0.843750
-worker_index: 3, step=123	smooth = 0.598188	cost = 0.625591	acc = 0.859375
-worker_index: 3, step=124	smooth = 0.602196	cost = 0.638260	acc = 0.843750
-worker_index: 3, step=125	smooth = 0.605065	cost = 0.630894	acc = 0.828125
-worker_index: 3, step=126	smooth = 0.613694	cost = 0.691356	acc = 0.843750
-worker_index: 3, step=127	smooth = 0.606784	cost = 0.544588	acc = 0.859375
-worker_index: 3, step=128	smooth = 0.601101	cost = 0.549958	acc = 0.906250
-worker_index: 3, step=129	smooth = 0.622507	cost = 0.815155	acc = 0.828125
-worker_index: 3, step=130	smooth = 0.637031	cost = 0.767748	acc = 0.796875
-worker_index: 3, step=131	smooth = 0.631759	cost = 0.584311	acc = 0.890625
-worker_index: 3, step=132	smooth = 0.621964	cost = 0.533811	acc = 0.953125
-worker_index: 3, step=133	smooth = 0.659646	cost = 0.998787	acc = 0.687500
-worker_index: 3, step=134	smooth = 0.651354	cost = 0.576721	acc = 0.796875
-worker_index: 3, step=135	smooth = 0.623395	cost = 0.371770	acc = 0.921875
-worker_index: 3, step=136	smooth = 0.599774	cost = 0.387184	acc = 0.906250
-worker_index: 3, step=137	smooth = 0.583703	cost = 0.439058	acc = 0.906250
-worker_index: 3, step=138	smooth = 0.570838	cost = 0.455059	acc = 0.875000
-worker_index: 3, step=139	smooth = 0.572212	cost = 0.584581	acc = 0.890625
-worker_index: 3, step=140	smooth = 0.585083	cost = 0.700923	acc = 0.750000
-worker_index: 3, step=141	smooth = 0.599758	cost = 0.731824	acc = 0.796875
-worker_index: 3, step=142	smooth = 0.582217	cost = 0.424349	acc = 0.921875
-worker_index: 3, step=143	smooth = 0.605637	cost = 0.816419	acc = 0.703125
-worker_index: 3, step=144	smooth = 0.607363	cost = 0.622893	acc = 0.843750
-worker_index: 3, step=145	smooth = 0.593923	cost = 0.472971	acc = 0.843750
-worker_index: 3, step=146	smooth = 0.587875	cost = 0.533441	acc = 0.875000
-worker_index: 3, step=147	smooth = 0.606480	cost = 0.773923	acc = 0.796875
-worker_index: 3, step=148	smooth = 0.598102	cost = 0.522697	acc = 0.843750
-worker_index: 3, step=149	smooth = 0.596528	cost = 0.582363	acc = 0.812500
-worker_index: 3, step=150	smooth = 0.629461	cost = 0.925860	acc = 0.734375
-worker_index: 3, step=151	smooth = 0.617435	cost = 0.509205	acc = 0.906250
-worker_index: 3, step=152	smooth = 0.605134	cost = 0.494418	acc = 0.921875
-worker_index: 3, step=153	smooth = 0.605837	cost = 0.612166	acc = 0.843750
-worker_index: 3, step=154	smooth = 0.588875	cost = 0.436214	acc = 0.859375
-worker_index: 3, step=155	smooth = 0.582819	cost = 0.528324	acc = 0.859375
-worker_index: 3, step=156	smooth = 0.572252	cost = 0.477144	acc = 0.843750
-worker_index: 3, step=157	smooth = 0.558136	cost = 0.431097	acc = 0.921875
-worker_index: 3, step=158	smooth = 0.555190	cost = 0.528672	acc = 0.875000
-worker_index: 3, step=159	smooth = 0.562755	cost = 0.630839	acc = 0.843750
-worker_index: 3, step=160	smooth = 0.557146	cost = 0.506666	acc = 0.890625
-worker_index: 3, step=161	smooth = 0.558793	cost = 0.573619	acc = 0.828125
-worker_index: 3, step=162	smooth = 0.577113	cost = 0.741987	acc = 0.796875
-worker_index: 3, step=163	smooth = 0.582480	cost = 0.630786	acc = 0.828125
-worker_index: 3, step=164	smooth = 0.588517	cost = 0.642854	acc = 0.812500
-worker_index: 3, step=165	smooth = 0.577022	cost = 0.473559	acc = 0.859375
-worker_index: 3, step=166	smooth = 0.563784	cost = 0.444644	acc = 0.890625
-worker_index: 3, step=167	smooth = 0.557079	cost = 0.496733	acc = 0.890625
-worker_index: 3, step=168	smooth = 0.555721	cost = 0.543499	acc = 0.843750
-worker_index: 3, step=169	smooth = 0.547730	cost = 0.475817	acc = 0.890625
-worker_index: 3, step=170	smooth = 0.555739	cost = 0.627818	acc = 0.812500
-worker_index: 3, step=171	smooth = 0.534317	cost = 0.341518	acc = 0.953125
-worker_index: 3, step=172	smooth = 0.521271	cost = 0.403862	acc = 0.906250
-worker_index: 3, step=173	smooth = 0.514205	cost = 0.450604	acc = 0.906250
-worker_index: 3, step=174	smooth = 0.541132	cost = 0.783477	acc = 0.765625
-worker_index: 3, step=175	smooth = 0.528708	cost = 0.416895	acc = 0.890625
-worker_index: 3, step=176	smooth = 0.543230	cost = 0.673921	acc = 0.859375
-worker_index: 3, step=177	smooth = 0.563533	cost = 0.746266	acc = 0.812500
-worker_index: 3, step=178	smooth = 0.564006	cost = 0.568259	acc = 0.781250
-worker_index: 3, step=179	smooth = 0.582140	cost = 0.745352	acc = 0.687500
-worker_index: 3, step=180	smooth = 0.572180	cost = 0.482536	acc = 0.875000
-worker_index: 3, step=181	smooth = 0.574696	cost = 0.597344	acc = 0.843750
-worker_index: 3, step=182	smooth = 0.549535	cost = 0.323082	acc = 0.937500
-worker_index: 3, step=183	smooth = 0.556718	cost = 0.621363	acc = 0.843750
-worker_index: 3, step=184	smooth = 0.536961	cost = 0.359154	acc = 0.906250
-worker_index: 3, step=185	smooth = 0.537431	cost = 0.541662	acc = 0.828125
-worker_index: 3, step=186	smooth = 0.547081	cost = 0.633931	acc = 0.796875
-worker_index: 3, step=187	smooth = 0.546718	cost = 0.543448	acc = 0.843750
-worker_index: 3, step=188	smooth = 0.532576	cost = 0.405292	acc = 0.890625
-worker_index: 3, step=189	smooth = 0.535555	cost = 0.562374	acc = 0.828125
-worker_index: 3, step=190	smooth = 0.535551	cost = 0.535509	acc = 0.859375
-worker_index: 3, step=191	smooth = 0.535254	cost = 0.532581	acc = 0.828125
-worker_index: 3, step=192	smooth = 0.510837	cost = 0.291088	acc = 0.953125
-worker_index: 3, step=193	smooth = 0.503244	cost = 0.434907	acc = 0.875000
-worker_index: 3, step=194	smooth = 0.493058	cost = 0.401383	acc = 0.875000
-worker_index: 3, step=195	smooth = 0.498870	cost = 0.551178	acc = 0.859375
-worker_index: 3, step=196	smooth = 0.500596	cost = 0.516130	acc = 0.890625
-worker_index: 3, step=197	smooth = 0.494227	cost = 0.436904	acc = 0.921875
-worker_index: 3, step=198	smooth = 0.505067	cost = 0.602633	acc = 0.812500
-worker_index: 3, step=199	smooth = 0.498711	cost = 0.441499	acc = 0.843750
-worker_index: 3, step=200	smooth = 0.480252	cost = 0.314122	acc = 0.921875
-worker_index: 3, step=201	smooth = 0.484752	cost = 0.525259	acc = 0.890625
-worker_index: 3, step=202	smooth = 0.480868	cost = 0.445910	acc = 0.890625
-worker_index: 3, step=203	smooth = 0.467944	cost = 0.351629	acc = 0.906250
-worker_index: 3, step=204	smooth = 0.460539	cost = 0.393896	acc = 0.906250
-worker_index: 3, step=205	smooth = 0.457207	cost = 0.427214	acc = 0.906250
-worker_index: 3, step=206	smooth = 0.467730	cost = 0.562443	acc = 0.906250
-worker_index: 3, step=207	smooth = 0.472517	cost = 0.515599	acc = 0.828125
-worker_index: 3, step=208	smooth = 0.486528	cost = 0.612626	acc = 0.843750
-worker_index: 3, step=209	smooth = 0.485630	cost = 0.477544	acc = 0.875000
-worker_index: 3, step=210	smooth = 0.473338	cost = 0.362709	acc = 0.906250
-worker_index: 3, step=211	smooth = 0.461578	cost = 0.355736	acc = 0.890625
-worker_index: 3, step=212	smooth = 0.447469	cost = 0.320495	acc = 0.906250
-worker_index: 3, step=213	smooth = 0.455929	cost = 0.532064	acc = 0.843750
-worker_index: 3, step=214	smooth = 0.477425	cost = 0.670893	acc = 0.812500
-worker_index: 3, step=215	smooth = 0.472917	cost = 0.432345	acc = 0.875000
-worker_index: 3, step=216	smooth = 0.467398	cost = 0.417721	acc = 0.906250
-worker_index: 3, step=217	smooth = 0.455526	cost = 0.348684	acc = 0.906250
-worker_index: 3, step=218	smooth = 0.458703	cost = 0.487293	acc = 0.921875
-worker_index: 3, step=219	smooth = 0.476950	cost = 0.641175	acc = 0.765625
-worker_index: 3, step=220	smooth = 0.461016	cost = 0.317609	acc = 0.906250
-worker_index: 3, step=221	smooth = 0.455867	cost = 0.409527	acc = 0.859375
-worker_index: 3, step=222	smooth = 0.447206	cost = 0.369252	acc = 0.890625
-worker_index: 3, step=223	smooth = 0.469829	cost = 0.673441	acc = 0.765625
-worker_index: 3, step=224	smooth = 0.460724	cost = 0.378777	acc = 0.921875
-worker_index: 3, step=225	smooth = 0.440371	cost = 0.257198	acc = 0.937500
-worker_index: 3, step=226	smooth = 0.467184	cost = 0.708494	acc = 0.796875
-worker_index: 3, step=227	smooth = 0.467598	cost = 0.471328	acc = 0.890625
-worker_index: 3, step=228	smooth = 0.484260	cost = 0.634215	acc = 0.765625
-worker_index: 3, step=229	smooth = 0.468514	cost = 0.326799	acc = 0.890625
-worker_index: 3, step=230	smooth = 0.451477	cost = 0.298148	acc = 0.921875
-worker_index: 3, step=231	smooth = 0.425218	cost = 0.188889	acc = 1.000000
-worker_index: 3, step=232	smooth = 0.399369	cost = 0.166727	acc = 0.984375
-worker_index: 3, step=233	smooth = 0.393224	cost = 0.337918	acc = 0.953125
-worker_index: 3, step=234	smooth = 0.418545	cost = 0.646430	acc = 0.796875
-worker_index: 3, step=235	smooth = 0.454525	cost = 0.778350	acc = 0.765625
-worker_index: 3, step=236	smooth = 0.449074	cost = 0.400011	acc = 0.843750
-worker_index: 3, step=237	smooth = 0.430623	cost = 0.264572	acc = 0.953125
-worker_index: 3, step=238	smooth = 0.432112	cost = 0.445506	acc = 0.890625
-worker_index: 3, step=239	smooth = 0.426834	cost = 0.379334	acc = 0.921875
-worker_index: 3, step=240	smooth = 0.429552	cost = 0.454012	acc = 0.906250
-worker_index: 3, step=241	smooth = 0.428830	cost = 0.422338	acc = 0.859375
-worker_index: 3, step=242	smooth = 0.423194	cost = 0.372463	acc = 0.906250
-worker_index: 3, step=243	smooth = 0.408357	cost = 0.274824	acc = 0.937500
-worker_index: 3, step=244	smooth = 0.411623	cost = 0.441018	acc = 0.859375
-worker_index: 3, step=245	smooth = 0.407779	cost = 0.373185	acc = 0.906250
-worker_index: 3, step=246	smooth = 0.397730	cost = 0.307288	acc = 0.953125
-worker_index: 3, step=247	smooth = 0.431232	cost = 0.732751	acc = 0.781250
-worker_index: 3, step=248	smooth = 0.436638	cost = 0.485292	acc = 0.875000
-worker_index: 3, step=249	smooth = 0.446549	cost = 0.535750	acc = 0.859375
-worker_index: 3, step=250	smooth = 0.455019	cost = 0.531251	acc = 0.859375
-worker_index: 3, step=251	smooth = 0.456071	cost = 0.465536	acc = 0.859375
-worker_index: 3, step=252	smooth = 0.443977	cost = 0.335135	acc = 0.937500
-worker_index: 3, step=253	smooth = 0.431094	cost = 0.315143	acc = 0.953125
-worker_index: 3, step=254	smooth = 0.420014	cost = 0.320297	acc = 0.953125
-worker_index: 3, step=255	smooth = 0.412722	cost = 0.347089	acc = 0.875000
-worker_index: 3, step=256	smooth = 0.418121	cost = 0.466714	acc = 0.859375
-worker_index: 3, step=257	smooth = 0.423170	cost = 0.468613	acc = 0.875000
-worker_index: 3, step=258	smooth = 0.413843	cost = 0.329901	acc = 0.937500
-worker_index: 3, step=259	smooth = 0.410566	cost = 0.381066	acc = 0.875000
-worker_index: 3, step=260	smooth = 0.422287	cost = 0.527783	acc = 0.828125
-worker_index: 3, step=261	smooth = 0.422132	cost = 0.420730	acc = 0.921875
-worker_index: 3, step=262	smooth = 0.415946	cost = 0.360279	acc = 0.890625
-worker_index: 3, step=263	smooth = 0.413665	cost = 0.393133	acc = 0.921875
-worker_index: 3, step=264	smooth = 0.433842	cost = 0.615440	acc = 0.859375
-worker_index: 3, step=265	smooth = 0.422433	cost = 0.319748	acc = 0.953125
-worker_index: 3, step=266	smooth = 0.439740	cost = 0.595502	acc = 0.812500
-worker_index: 3, step=267	smooth = 0.452516	cost = 0.567501	acc = 0.781250
-worker_index: 3, step=268	smooth = 0.445603	cost = 0.383390	acc = 0.890625
-worker_index: 3, step=269	smooth = 0.437489	cost = 0.364454	acc = 0.937500
-worker_index: 3, step=270	smooth = 0.437335	cost = 0.435950	acc = 0.890625
-worker_index: 3, step=271	smooth = 0.437844	cost = 0.442423	acc = 0.812500
-worker_index: 3, step=272	smooth = 0.451238	cost = 0.571788	acc = 0.812500
-worker_index: 3, step=273	smooth = 0.452888	cost = 0.467742	acc = 0.843750
-worker_index: 3, step=274	smooth = 0.446021	cost = 0.384212	acc = 0.937500
-worker_index: 3, step=275	smooth = 0.449953	cost = 0.485345	acc = 0.890625
-worker_index: 3, step=276	smooth = 0.459081	cost = 0.541227	acc = 0.812500
-worker_index: 3, step=277	smooth = 0.470042	cost = 0.568691	acc = 0.843750
-worker_index: 3, step=278	smooth = 0.462324	cost = 0.392866	acc = 0.906250
-worker_index: 3, step=279	smooth = 0.461735	cost = 0.456429	acc = 0.906250
-worker_index: 3, step=280	smooth = 0.443698	cost = 0.281367	acc = 0.921875
-worker_index: 3, step=281	smooth = 0.439619	cost = 0.402913	acc = 0.906250
-worker_index: 3, step=282	smooth = 0.436577	cost = 0.409194	acc = 0.875000
-worker_index: 3, step=283	smooth = 0.421742	cost = 0.288226	acc = 0.937500
-worker_index: 3, step=284	smooth = 0.408992	cost = 0.294242	acc = 0.953125
-worker_index: 3, step=285	smooth = 0.430599	cost = 0.625060	acc = 0.796875
-worker_index: 3, step=286	smooth = 0.434296	cost = 0.467576	acc = 0.875000
-worker_index: 3, step=287	smooth = 0.426498	cost = 0.356310	acc = 0.921875
-worker_index: 3, step=288	smooth = 0.417055	cost = 0.332071	acc = 0.937500
-worker_index: 3, step=289	smooth = 0.409730	cost = 0.343808	acc = 0.906250
-worker_index: 3, step=290	smooth = 0.402187	cost = 0.334298	acc = 0.859375
-worker_index: 3, step=291	smooth = 0.399441	cost = 0.374724	acc = 0.906250
-worker_index: 3, step=292	smooth = 0.392987	cost = 0.334900	acc = 0.937500
-worker_index: 3, step=293	smooth = 0.397366	cost = 0.436776	acc = 0.859375
-worker_index: 3, step=294	smooth = 0.440999	cost = 0.833703	acc = 0.718750
-worker_index: 3, step=295	smooth = 0.436059	cost = 0.391600	acc = 0.875000
-worker_index: 3, step=296	smooth = 0.454859	cost = 0.624059	acc = 0.765625
-worker_index: 3, step=297	smooth = 0.443827	cost = 0.344537	acc = 0.937500
-worker_index: 3, step=298	smooth = 0.456199	cost = 0.567546	acc = 0.812500
-worker_index: 3, step=299	smooth = 0.430442	cost = 0.198625	acc = 0.968750
-worker_index: 3, step=300	smooth = 0.431662	cost = 0.442650	acc = 0.843750
-step63	all_loss0.363616	all_ccc=59.000000	rate0.936508
-step127	all_loss0.783596	all_ccc=115.000000	rate0.905512
-step191	all_loss1.091178	all_ccc=174.000000	rate0.910995
-step255	all_loss1.537688	all_ccc=229.000000	rate0.898039
-step319	all_loss1.976565	all_ccc=286.000000	rate0.896552
-step383	all_loss2.465892	all_ccc=339.000000	rate0.885117
-step447	all_loss2.865784	all_ccc=395.000000	rate0.883669
-step511	all_loss3.396794	all_ccc=448.000000	rate0.876712
-step575	all_loss4.007776	all_ccc=501.000000	rate0.871304
-step639	all_loss4.516236	all_ccc=552.000000	rate0.863850
-step703	all_loss4.994535	all_ccc=609.000000	rate0.866287
-step767	all_loss5.398418	all_ccc=664.000000	rate0.865711
-step831	all_loss5.687414	all_ccc=724.000000	rate0.871239
-step895	all_loss6.031151	all_ccc=782.000000	rate0.873743
-step959	all_loss6.541983	all_ccc=836.000000	rate0.871741
-step1023	all_loss6.972384	all_ccc=891.000000	rate0.870968
-step1087	all_loss7.391680	all_ccc=948.000000	rate0.872125
-step1151	all_loss8.010395	all_ccc=1003.000000	rate0.871416
-step1215	all_loss8.613787	all_ccc=1057.000000	rate0.869959
-step1279	all_loss9.413541	all_ccc=1105.000000	rate0.863956
-step1343	all_loss10.021387	all_ccc=1158.000000	rate0.862249
-step1407	all_loss10.429503	all_ccc=1214.000000	rate0.862829
-step1471	all_loss10.947219	all_ccc=1267.000000	rate0.861319
-step1535	all_loss11.396518	all_ccc=1325.000000	rate0.863192
-step1599	all_loss11.863442	all_ccc=1383.000000	rate0.864916
-step1663	all_loss12.320776	all_ccc=1441.000000	rate0.866506
-step1727	all_loss12.962955	all_ccc=1493.000000	rate0.864505
-step1791	all_loss13.601564	all_ccc=1544.000000	rate0.862088
-step1855	all_loss13.926676	all_ccc=1605.000000	rate0.865229
-step1919	all_loss14.449412	all_ccc=1659.000000	rate0.864513
-step1983	all_loss14.942463	all_ccc=1710.000000	rate0.862330
-step2047	all_loss15.581152	all_ccc=1763.000000	rate0.861260
-step2111	all_loss16.125984	all_ccc=1816.000000	rate0.860256
-step2175	all_loss16.706699	all_ccc=1871.000000	rate0.860230
-step2239	all_loss17.378174	all_ccc=1924.000000	rate0.859312
-step2303	all_loss17.900225	all_ccc=1982.000000	rate0.860617
-step2367	all_loss18.217527	all_ccc=2041.000000	rate0.862273
-step2431	all_loss18.922075	all_ccc=2090.000000	rate0.859729
-step2495	all_loss19.307611	all_ccc=2146.000000	rate0.860120
-step2559	all_loss19.758127	all_ccc=2200.000000	rate0.859711
-step2623	all_loss20.350351	all_ccc=2252.000000	rate0.858559
-step2687	all_loss20.793518	all_ccc=2307.000000	rate0.858578
-step2751	all_loss21.195381	all_ccc=2364.000000	rate0.859324
-step2815	all_loss21.588457	all_ccc=2419.000000	rate0.859325
-step2879	all_loss21.914938	all_ccc=2477.000000	rate0.860368
-step2943	all_loss22.380753	all_ccc=2534.000000	rate0.861026
-step3007	all_loss22.810406	all_ccc=2590.000000	rate0.861324
-step3071	all_loss23.074640	all_ccc=2652.000000	rate0.863562
-step3135	all_loss23.554642	all_ccc=2709.000000	rate0.864115
-step3199	all_loss24.055174	all_ccc=2764.000000	rate0.864020
-step3263	all_loss24.496861	all_ccc=2821.000000	rate0.864542
-step3327	all_loss24.883570	all_ccc=2879.000000	rate0.865344
-step3391	all_loss25.308764	all_ccc=2936.000000	rate0.865821
-step3455	all_loss25.660170	all_ccc=2994.000000	rate0.866570
-step3519	all_loss26.020302	all_ccc=3053.000000	rate0.867576
-step3583	all_loss26.622385	all_ccc=3107.000000	rate0.867150
-step3647	all_loss27.075619	all_ccc=3164.000000	rate0.867562
-step3711	all_loss27.408203	all_ccc=3223.000000	rate0.868499
-step3775	all_loss28.070482	all_ccc=3273.000000	rate0.867020
-step3839	all_loss28.818720	all_ccc=3322.000000	rate0.865330
-step3903	all_loss29.422670	all_ccc=3375.000000	rate0.864719
-step3967	all_loss29.987499	all_ccc=3430.000000	rate0.864633
-step4031	all_loss30.378332	all_ccc=3487.000000	rate0.865046
-step4095	all_loss30.888020	all_ccc=3542.000000	rate0.864957
-step4159	all_loss31.314209	all_ccc=3598.000000	rate0.865112
-step4223	all_loss31.885168	all_ccc=3652.000000	rate0.864788
-step4287	all_loss32.343674	all_ccc=3706.000000	rate0.864474
-step4351	all_loss33.024940	all_ccc=3758.000000	rate0.863709
-step4415	all_loss33.449604	all_ccc=3814.000000	rate0.863873
-step4479	all_loss33.976601	all_ccc=3870.000000	rate0.864032
-step4543	all_loss34.481907	all_ccc=3927.000000	rate0.864407
-step4607	all_loss34.914940	all_ccc=3982.000000	rate0.864337
-step4671	all_loss35.255753	all_ccc=4044.000000	rate0.865768
-step4735	all_loss35.613266	all_ccc=4102.000000	rate0.866315
-step4799	all_loss36.036556	all_ccc=4159.000000	rate0.866639
-step4863	all_loss36.625771	all_ccc=4214.000000	rate0.866543
-step4927	all_loss37.171627	all_ccc=4267.000000	rate0.866044
-step4991	all_loss37.646626	all_ccc=4319.000000	rate0.865358
-step5055	all_loss37.900795	all_ccc=4379.000000	rate0.866271
-step5119	all_loss38.245350	all_ccc=4438.000000	rate0.866966
-step5183	all_loss38.543064	all_ccc=4496.000000	rate0.867451
-step5247	all_loss38.835495	all_ccc=4556.000000	rate0.868306
-step5311	all_loss39.033455	all_ccc=4617.000000	rate0.869328
-step5375	all_loss39.173450	all_ccc=4680.000000	rate0.870698
-step5439	all_loss39.327427	all_ccc=4743.000000	rate0.872035
-step5503	all_loss39.420113	all_ccc=4807.000000	rate0.873524
-step5567	all_loss39.675854	all_ccc=4866.000000	rate0.874079
-step5631	all_loss39.984642	all_ccc=4926.000000	rate0.874800
-step5695	all_loss40.347450	all_ccc=4981.000000	rate0.874627
-step5759	all_loss40.746765	all_ccc=5039.000000	rate0.874978
-step5823	all_loss40.936180	all_ccc=5099.000000	rate0.875665
-step5887	all_loss41.263191	all_ccc=5155.000000	rate0.875658
-step5951	all_loss41.796600	all_ccc=5211.000000	rate0.875651
-step6015	all_loss42.241611	all_ccc=5265.000000	rate0.875312
-step6079	all_loss42.712368	all_ccc=5322.000000	rate0.875473
-step6143	all_loss43.141750	all_ccc=5378.000000	rate0.875468
-step6207	all_loss43.553261	all_ccc=5437.000000	rate0.875947
-step6271	all_loss43.639015	all_ccc=5500.000000	rate0.877053
-step6335	all_loss43.761150	all_ccc=5563.000000	rate0.878137
-step6399	all_loss44.041611	all_ccc=5622.000000	rate0.878575
-step6463	all_loss44.327106	all_ccc=5679.000000	rate0.878694
-step6527	all_loss44.601784	all_ccc=5739.000000	rate0.879271
-step6591	all_loss45.048302	all_ccc=5794.000000	rate0.879078
-step6655	all_loss45.662628	all_ccc=5847.000000	rate0.878588
-step6719	all_loss45.973103	all_ccc=5906.000000	rate0.879000
-step6783	all_loss46.566692	all_ccc=5957.000000	rate0.878225
-step6847	all_loss46.910072	all_ccc=6018.000000	rate0.878925
-step6911	all_loss47.223457	all_ccc=6076.000000	rate0.879178
-step6975	all_loss47.449665	all_ccc=6135.000000	rate0.879570
-step7039	all_loss47.653015	all_ccc=6195.000000	rate0.880097
-step7103	all_loss47.842720	all_ccc=6258.000000	rate0.881036
-step7167	all_loss48.072037	all_ccc=6320.000000	rate0.881819
-step7231	all_loss48.383907	all_ccc=6378.000000	rate0.882036
-step7295	all_loss48.665104	all_ccc=6439.000000	rate0.882659
-step7359	all_loss48.817280	all_ccc=6501.000000	rate0.883408
-step7423	all_loss49.019104	all_ccc=6564.000000	rate0.884279
-step7487	all_loss49.519424	all_ccc=6621.000000	rate0.884333
-step7551	all_loss49.924377	all_ccc=6678.000000	rate0.884386
-step7615	all_loss50.146816	all_ccc=6739.000000	rate0.884964
-step7679	all_loss50.374619	all_ccc=6801.000000	rate0.885662
-step7743	all_loss50.626640	all_ccc=6862.000000	rate0.886220
-step7807	all_loss50.898270	all_ccc=6923.000000	rate0.886768
-step7871	all_loss51.565681	all_ccc=6974.000000	rate0.886037
-step7935	all_loss52.103802	all_ccc=7025.000000	rate0.885318
-step7999	all_loss52.251808	all_ccc=7088.000000	rate0.886111
-step8063	all_loss52.465664	all_ccc=7147.000000	rate0.886395
-step8127	all_loss52.818626	all_ccc=7206.000000	rate0.886674
-step8191	all_loss53.034920	all_ccc=7268.000000	rate0.887315
-step8255	all_loss53.287041	all_ccc=7327.000000	rate0.887583
-step8319	all_loss53.680492	all_ccc=7385.000000	rate0.887727
-step8383	all_loss53.963837	all_ccc=7446.000000	rate0.888226
-step8447	all_loss54.222282	all_ccc=7506.000000	rate0.888600
-step8511	all_loss54.435902	all_ccc=7568.000000	rate0.889202
-step8575	all_loss54.692181	all_ccc=7629.000000	rate0.889679
-step8639	all_loss54.822025	all_ccc=7693.000000	rate0.890497
-step8703	all_loss54.936085	all_ccc=7756.000000	rate0.891187
-step8767	all_loss54.995857	all_ccc=7820.000000	rate0.891981
-step8831	all_loss55.066647	all_ccc=7884.000000	rate0.892764
-step8895	all_loss55.145271	all_ccc=7948.000000	rate0.893536
-step8959	all_loss55.252945	all_ccc=8012.000000	rate0.894296
-step9023	all_loss55.721661	all_ccc=8068.000000	rate0.894159
-step9087	all_loss56.098877	all_ccc=8126.000000	rate0.894245
-step9151	all_loss56.287048	all_ccc=8187.000000	rate0.894656
-step9215	all_loss56.515068	all_ccc=8250.000000	rate0.895279
-step9279	all_loss56.738300	all_ccc=8311.000000	rate0.895678
-step9343	all_loss56.937187	all_ccc=8372.000000	rate0.896072
-step9407	all_loss57.060974	all_ccc=8435.000000	rate0.896673
-step9471	all_loss57.322765	all_ccc=8494.000000	rate0.896843
-step9535	all_loss57.523960	all_ccc=8556.000000	rate0.897326
-step9599	all_loss57.781223	all_ccc=8615.000000	rate0.897489
-step9663	all_loss58.189613	all_ccc=8670.000000	rate0.897237
-step9727	all_loss58.643753	all_ccc=8726.000000	rate0.897091
-step9791	all_loss59.550713	all_ccc=8773.000000	rate0.896027
-step9855	all_loss60.000717	all_ccc=8830.000000	rate0.895992
-step9919	all_loss60.720295	all_ccc=8881.000000	rate0.895352
-step9983	all_loss61.319477	all_ccc=8937.000000	rate0.895222
+W0423 14:54:31.383900 37106 device_context.cc:237] Please NOTE: device: 3, CUDA Capability: 70, Driver API Version: 10.2, Runtime API Version: 10.0
+W0423 14:54:31.387851 37106 device_context.cc:245] device: 3, cuDNN Version: 7.6.
+I0423 14:54:32.911819 37427 grpc_server.cc:477] Server listening on 127.0.0.1:6173 successful, selected port: 6173
+I0423 14:54:38.163211 37106 rpc_server.cc:28] RPCServer ShutDown 
+W0423 14:54:38.163767 37432 grpc_server.cc:604] CompletionQueue RequestSend shutdown!
+W0423 14:54:38.163758 37434 grpc_server.cc:604] CompletionQueue RequestSend shutdown!
+W0423 14:54:38.163775 37433 grpc_server.cc:604] CompletionQueue RequestSend shutdown!
+W0423 14:54:38.163758 37430 grpc_server.cc:604] CompletionQueue RequestSend shutdown!
+W0423 14:54:38.163775 37431 grpc_server.cc:604] CompletionQueue RequestSend shutdown!
+I0423 14:54:38.165405 37106 gen_nccl_id_op.cc:86] trainer_id:3, use_hierarchical_allreduce:0, inter_nranks:0, inter_trainer_id:-1, exter_trainer_id:-1, trainers:127.0.0.1:6170,127.0.0.1:6171,127.0.0.1:6172,127.0.0.1:6173,127.0.0.1:6174,127.0.0.1:6175,127.0.0.1:6176,127.0.0.1:6177,
+I0423 14:54:38.166262 37106 parallel_executor.cc:440] The Program will be executed on CUDA using ParallelExecutor, 1 cards are used, so 1 programs are executed in parallel.
+I0423 14:54:38.166285 37106 parallel_executor.cc:230] not find NCCLCommunicator in scope, so recreate it!
+I0423 14:54:38.166296 37106 parallel_executor.cc:114] nccl comm num:1, nranks:8, num_trainers:8, trainer_id:3
+I0423 14:54:38.176995 37106 nccl_helper.h:127] init nccl rank:3, nranks:8, gpu_id:3, dev_id:3
+instance-mqcyj27y-2:37106:37106 [3] NCCL INFO Bootstrap : Using [0]eth0:10.9.189.6<0>
+instance-mqcyj27y-2:37106:37106 [3] NCCL INFO NET/Plugin : No plugin found (libnccl-net.so), using internal implementation
+instance-mqcyj27y-2:37106:37106 [3] NCCL INFO NET/IB : No device found.
+instance-mqcyj27y-2:37106:37106 [3] NCCL INFO NET/Socket : Using [0]eth0:10.9.189.6<0>
+instance-mqcyj27y-2:37106:37106 [3] NCCL INFO Using network Socket
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO threadThresholds 8/8/64 | 64/8/64 | 8/8/64
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Trees [0] -1/-1/-1->3->2|2->3->-1/-1/-1 [1] -1/-1/-1->3->2|2->3->-1/-1/-1 [2] 2/-1/-1->3->0|0->3->2/-1/-1 [3] 2/-1/-1->3->0|0->3->2/-1/-1 [4] 7/-1/-1->3->1|1->3->7/-1/-1 [5] 1/-1/-1->3->7|7->3->1/-1/-1 [6] -1/-1/-1->3->2|2->3->-1/-1/-1 [7] -1/-1/-1->3->2|2->3->-1/-1/-1 [8] 2/-1/-1->3->0|0->3->2/-1/-1 [9] 2/-1/-1->3->0|0->3->2/-1/-1 [10] 7/-1/-1->3->1|1->3->7/-1/-1 [11] 1/-1/-1->3->7|7->3->1/-1/-1
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 00 : 3[7000] -> 0[4000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 00 : 3[7000] -> 2[6000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 01 : 3[7000] -> 0[4000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 01 : 3[7000] -> 2[6000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 02 : 3[7000] -> 2[6000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 02 : 3[7000] -> 0[4000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 03 : 3[7000] -> 2[6000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 03 : 3[7000] -> 0[4000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 04 : 3[7000] -> 7[b000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 04 : 3[7000] -> 1[5000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 05 : 3[7000] -> 1[5000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 05 : 3[7000] -> 7[b000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 06 : 3[7000] -> 0[4000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 06 : 3[7000] -> 2[6000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 07 : 3[7000] -> 0[4000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 07 : 3[7000] -> 2[6000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 08 : 3[7000] -> 2[6000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 08 : 3[7000] -> 0[4000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 09 : 3[7000] -> 2[6000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 09 : 3[7000] -> 0[4000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 10 : 3[7000] -> 7[b000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 10 : 3[7000] -> 1[5000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 11 : 3[7000] -> 1[5000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO Ring 11 : 3[7000] -> 7[b000] via P2P/IPC
+instance-mqcyj27y-2:37106:37634 [3] NCCL INFO comm 0x7fb668006640 rank 3 nranks 8 cudaDev 3 busId 7000 - Init COMPLETE
+I0423 14:54:39.305567 37106 nccl_helper.h:241] init trainer_id:3, comm no:0
+I0423 14:54:39.314258 37106 build_strategy.cc:312] apply all passes
+I0423 14:54:39.314299 37106 pass_builder.cc:24] Append coalesce_grad_tensor_pass
+I0423 14:54:39.314316 37106 pass_builder.cc:24] Append all_reduce_mode_multi_devices_pass
+I0423 14:54:39.314334 37106 pass_builder.cc:24] Append fuse_all_reduce_op_pass
+I0423 14:54:39.314353 37106 pass_builder.cc:24] Append all_reduce_deps_pass
+I0423 14:54:39.314360 37106 pass_builder.cc:24] Append backward_optimizer_op_deps_pass
+I0423 14:54:39.314371 37106 pass_builder.cc:24] Append modify_op_lock_and_record_event_pass
+I0423 14:54:39.314379 37106 pass_builder.cc:24] Append multi_devices_check_pass
+I0423 14:54:39.314395 37106 build_strategy.cc:196] CollectiveContext:endpoints_:127.0.0.1:6170,127.0.0.1:6171,127.0.0.1:6172,127.0.0.1:6173,127.0.0.1:6174,127.0.0.1:6175,127.0.0.1:6176,127.0.0.1:6177,trainer_id_:3
+I0423 14:54:39.314414 37106 build_strategy.cc:317] BuildStrategy::Apply pass:coalesce_grad_tensor_pass
+I0423 14:54:39.314424 37106 build_strategy.cc:389] Start Apply Pass coalesce_grad_tensor_pass
+I0423 14:54:39.314707 37106 build_strategy.cc:391] Finish Apply Pass coalesce_grad_tensor_pass
+I0423 14:54:39.314724 37106 build_strategy.cc:317] BuildStrategy::Apply pass:all_reduce_mode_multi_devices_pass
+I0423 14:54:39.314733 37106 build_strategy.cc:389] Start Apply Pass all_reduce_mode_multi_devices_pass
+I0423 14:54:39.315618 37106 build_strategy.cc:391] Finish Apply Pass all_reduce_mode_multi_devices_pass
+I0423 14:54:39.315641 37106 build_strategy.cc:317] BuildStrategy::Apply pass:fuse_all_reduce_op_pass
+I0423 14:54:39.315655 37106 build_strategy.cc:389] Start Apply Pass fuse_all_reduce_op_pass
+W0423 14:54:39.315686 37106 fuse_all_reduce_op_pass.cc:74] Find all_reduce operators: 6. To make the speed faster, some all_reduce ops are fused during training, after fusion, the number of all_reduce ops is 3.
+I0423 14:54:39.315794 37106 build_strategy.cc:391] Finish Apply Pass fuse_all_reduce_op_pass
+I0423 14:54:39.315802 37106 build_strategy.cc:317] BuildStrategy::Apply pass:all_reduce_deps_pass
+I0423 14:54:39.315817 37106 build_strategy.cc:365] SeqOnlyAllReduceOps:1, num_trainers:8
+I0423 14:54:39.315832 37106 build_strategy.cc:389] Start Apply Pass all_reduce_deps_pass
+I0423 14:54:39.315943 37106 build_strategy.cc:391] Finish Apply Pass all_reduce_deps_pass
+I0423 14:54:39.315948 37106 build_strategy.cc:317] BuildStrategy::Apply pass:backward_optimizer_op_deps_pass
+I0423 14:54:39.315953 37106 build_strategy.cc:389] Start Apply Pass backward_optimizer_op_deps_pass
+I0423 14:54:39.316113 37106 build_strategy.cc:391] Finish Apply Pass backward_optimizer_op_deps_pass
+I0423 14:54:39.316119 37106 build_strategy.cc:317] BuildStrategy::Apply pass:modify_op_lock_and_record_event_pass
+I0423 14:54:39.316124 37106 build_strategy.cc:389] Start Apply Pass modify_op_lock_and_record_event_pass
+I0423 14:54:39.316224 37106 build_strategy.cc:391] Finish Apply Pass modify_op_lock_and_record_event_pass
+I0423 14:54:39.316229 37106 build_strategy.cc:317] BuildStrategy::Apply pass:multi_devices_check_pass
+I0423 14:54:39.316234 37106 build_strategy.cc:389] Start Apply Pass multi_devices_check_pass
+I0423 14:54:39.316325 37106 build_strategy.cc:391] Finish Apply Pass multi_devices_check_pass
+I0423 14:54:39.316334 37106 build_strategy.cc:393] All Passes Applied
+I0423 14:54:39.316380 37106 reference_count_pass.cc:286] Place number: 1
+I0423 14:54:39.316804 37106 parallel_executor.cc:307] Inplace strategy is enabled, when build_strategy.enable_inplace = True
+I0423 14:54:39.317196 37106 parallel_executor.cc:375] Garbage collection strategy is enabled, when FLAGS_eager_delete_tensor_gb = 0
+worker_index: 3, step=0	smooth = 1.174037	cost = 2.740367	acc = 0.093750
+worker_index: 3, step=1	smooth = 1.496582	cost = 4.399485	acc = 0.218750
+worker_index: 3, step=2	smooth = 1.659690	cost = 3.127664	acc = 0.078125
+worker_index: 3, step=3	smooth = 1.744849	cost = 2.511283	acc = 0.218750
+worker_index: 3, step=4	smooth = 1.754453	cost = 1.840886	acc = 0.546875
+worker_index: 3, step=5	smooth = 1.745427	cost = 1.664197	acc = 0.656250
+worker_index: 3, step=6	smooth = 1.720856	cost = 1.499713	acc = 0.625000
+worker_index: 3, step=7	smooth = 1.678450	cost = 1.296800	acc = 0.765625
+worker_index: 3, step=8	smooth = 1.648445	cost = 1.378401	acc = 0.578125
+worker_index: 3, step=9	smooth = 1.598856	cost = 1.152557	acc = 0.687500
+worker_index: 3, step=10	smooth = 1.653999	cost = 2.150279	acc = 0.265625
+worker_index: 3, step=11	smooth = 1.689727	cost = 2.011286	acc = 0.515625
+worker_index: 3, step=12	smooth = 1.715025	cost = 1.942700	acc = 0.359375
+worker_index: 3, step=13	smooth = 1.692615	cost = 1.490933	acc = 0.562500
+worker_index: 3, step=14	smooth = 1.635247	cost = 1.118934	acc = 0.718750
+worker_index: 3, step=15	smooth = 1.585216	cost = 1.134934	acc = 0.718750
+worker_index: 3, step=16	smooth = 1.516050	cost = 0.893554	acc = 0.796875
+worker_index: 3, step=17	smooth = 1.465905	cost = 1.014600	acc = 0.718750
+worker_index: 3, step=18	smooth = 1.432787	cost = 1.134723	acc = 0.656250
+worker_index: 3, step=19	smooth = 1.423809	cost = 1.343008	acc = 0.531250
+worker_index: 3, step=20	smooth = 1.376630	cost = 0.952025	acc = 0.671875
+worker_index: 3, step=21	smooth = 1.344836	cost = 1.058685	acc = 0.578125
+worker_index: 3, step=22	smooth = 1.335192	cost = 1.248396	acc = 0.578125
+worker_index: 3, step=23	smooth = 1.322434	cost = 1.207614	acc = 0.734375
+worker_index: 3, step=24	smooth = 1.308973	cost = 1.187826	acc = 0.609375
+worker_index: 3, step=25	smooth = 1.248369	cost = 0.702933	acc = 0.750000
+worker_index: 3, step=26	smooth = 1.190970	cost = 0.674372	acc = 0.828125
+worker_index: 3, step=27	smooth = 1.150968	cost = 0.790954	acc = 0.781250
+worker_index: 3, step=28	smooth = 1.090961	cost = 0.550894	acc = 0.875000
+worker_index: 3, step=29	smooth = 1.051188	cost = 0.693230	acc = 0.750000
+worker_index: 3, step=30	smooth = 1.024014	cost = 0.779450	acc = 0.703125
+worker_index: 3, step=31	smooth = 0.990420	cost = 0.688073	acc = 0.781250
+worker_index: 3, step=32	smooth = 0.964601	cost = 0.732237	acc = 0.765625
+worker_index: 3, step=33	smooth = 0.949381	cost = 0.812397	acc = 0.765625
+worker_index: 3, step=34	smooth = 0.903093	cost = 0.486501	acc = 0.875000
+worker_index: 3, step=35	smooth = 0.876608	cost = 0.638239	acc = 0.812500
+worker_index: 3, step=36	smooth = 0.851953	cost = 0.630066	acc = 0.734375
+worker_index: 3, step=37	smooth = 0.800704	cost = 0.339456	acc = 0.890625
+worker_index: 3, step=38	smooth = 0.799569	cost = 0.789353	acc = 0.765625
+worker_index: 3, step=39	smooth = 0.792541	cost = 0.729298	acc = 0.765625
+worker_index: 3, step=40	smooth = 0.761313	cost = 0.480252	acc = 0.796875
+worker_index: 3, step=41	smooth = 0.728719	cost = 0.435381	acc = 0.906250
+worker_index: 3, step=42	smooth = 0.700944	cost = 0.450963	acc = 0.890625
+worker_index: 3, step=43	smooth = 0.682303	cost = 0.514534	acc = 0.859375
+worker_index: 3, step=44	smooth = 0.652846	cost = 0.387734	acc = 0.812500
+worker_index: 3, step=45	smooth = 0.634486	cost = 0.469251	acc = 0.796875
+worker_index: 3, step=46	smooth = 0.642266	cost = 0.712285	acc = 0.765625
+worker_index: 3, step=47	smooth = 0.644642	cost = 0.666021	acc = 0.812500
+worker_index: 3, step=48	smooth = 0.641681	cost = 0.615033	acc = 0.828125
+worker_index: 3, step=49	smooth = 0.631380	cost = 0.538677	acc = 0.859375
+worker_index: 3, step=50	smooth = 0.616920	cost = 0.486771	acc = 0.859375
+worker_index: 3, step=51	smooth = 0.621310	cost = 0.660827	acc = 0.734375
+worker_index: 3, step=52	smooth = 0.629953	cost = 0.707736	acc = 0.750000
+worker_index: 3, step=53	smooth = 0.631522	cost = 0.645648	acc = 0.734375
+worker_index: 3, step=54	smooth = 0.660583	cost = 0.922125	acc = 0.765625
+worker_index: 3, step=55	smooth = 0.637268	cost = 0.427437	acc = 0.828125
+worker_index: 3, step=56	smooth = 0.616985	cost = 0.434438	acc = 0.875000
+worker_index: 3, step=57	smooth = 0.617175	cost = 0.618879	acc = 0.796875
+worker_index: 3, step=58	smooth = 0.607486	cost = 0.520287	acc = 0.781250
+worker_index: 3, step=59	smooth = 0.589250	cost = 0.425132	acc = 0.843750
+worker_index: 3, step=60	smooth = 0.589469	cost = 0.591437	acc = 0.828125
+worker_index: 3, step=61	smooth = 0.613085	cost = 0.825633	acc = 0.718750
+worker_index: 3, step=62	smooth = 0.645588	cost = 0.938110	acc = 0.734375
+worker_index: 3, step=63	smooth = 0.618444	cost = 0.374149	acc = 0.875000
+worker_index: 3, step=64	smooth = 0.597464	cost = 0.408648	acc = 0.921875
+worker_index: 3, step=65	smooth = 0.573592	cost = 0.358741	acc = 0.921875
+worker_index: 3, step=66	smooth = 0.565960	cost = 0.497276	acc = 0.828125
+worker_index: 3, step=67	smooth = 0.540183	cost = 0.308187	acc = 0.937500
+worker_index: 3, step=68	smooth = 0.518671	cost = 0.325066	acc = 0.875000
+worker_index: 3, step=69	smooth = 0.517401	cost = 0.505966	acc = 0.843750
+worker_index: 3, step=70	smooth = 0.500004	cost = 0.343432	acc = 0.875000
+worker_index: 3, step=71	smooth = 0.500655	cost = 0.506515	acc = 0.828125
+worker_index: 3, step=72	smooth = 0.494259	cost = 0.436692	acc = 0.812500
+worker_index: 3, step=73	smooth = 0.478263	cost = 0.334304	acc = 0.906250
+worker_index: 3, step=74	smooth = 0.482813	cost = 0.523764	acc = 0.843750
+worker_index: 3, step=75	smooth = 0.481615	cost = 0.470829	acc = 0.796875
+worker_index: 3, step=76	smooth = 0.486847	cost = 0.533935	acc = 0.859375
+worker_index: 3, step=77	smooth = 0.472084	cost = 0.339219	acc = 0.937500
+worker_index: 3, step=78	smooth = 0.465148	cost = 0.402727	acc = 0.890625
+worker_index: 3, step=79	smooth = 0.443884	cost = 0.252501	acc = 0.953125
+worker_index: 3, step=80	smooth = 0.449991	cost = 0.504960	acc = 0.796875
+worker_index: 3, step=81	smooth = 0.473146	cost = 0.681538	acc = 0.718750
+worker_index: 3, step=82	smooth = 0.472151	cost = 0.463193	acc = 0.875000
+worker_index: 3, step=83	smooth = 0.480260	cost = 0.553243	acc = 0.812500
+worker_index: 3, step=84	smooth = 0.453884	cost = 0.216498	acc = 0.937500
+worker_index: 3, step=85	smooth = 0.458701	cost = 0.502057	acc = 0.828125
+worker_index: 3, step=86	smooth = 0.452631	cost = 0.397998	acc = 0.828125
+worker_index: 3, step=87	smooth = 0.437294	cost = 0.299260	acc = 0.875000
+worker_index: 3, step=88	smooth = 0.438672	cost = 0.451082	acc = 0.921875
+worker_index: 3, step=89	smooth = 0.453735	cost = 0.589296	acc = 0.828125
+worker_index: 3, step=90	smooth = 0.435608	cost = 0.272465	acc = 0.890625
+worker_index: 3, step=91	smooth = 0.440100	cost = 0.480535	acc = 0.875000
+worker_index: 3, step=92	smooth = 0.425861	cost = 0.297702	acc = 0.859375
+worker_index: 3, step=93	smooth = 0.458863	cost = 0.755888	acc = 0.781250
+worker_index: 3, step=94	smooth = 0.447310	cost = 0.343326	acc = 0.890625
+worker_index: 3, step=95	smooth = 0.423926	cost = 0.213468	acc = 0.953125
+worker_index: 3, step=96	smooth = 0.444027	cost = 0.624936	acc = 0.796875
+worker_index: 3, step=97	smooth = 0.480838	cost = 0.812143	acc = 0.750000
+worker_index: 3, step=98	smooth = 0.477288	cost = 0.445336	acc = 0.812500
+worker_index: 3, step=99	smooth = 0.456973	cost = 0.274139	acc = 0.921875
+worker_index: 3, step=100	smooth = 0.444926	cost = 0.336504	acc = 0.875000
+worker_index: 3, step=101	smooth = 0.428760	cost = 0.283263	acc = 0.890625
+worker_index: 3, step=102	smooth = 0.461546	cost = 0.756625	acc = 0.796875
+worker_index: 3, step=103	smooth = 0.450744	cost = 0.353520	acc = 0.921875
+worker_index: 3, step=104	smooth = 0.476341	cost = 0.706717	acc = 0.796875
+worker_index: 3, step=105	smooth = 0.460084	cost = 0.313775	acc = 0.875000
+worker_index: 3, step=106	smooth = 0.464081	cost = 0.500047	acc = 0.843750
+worker_index: 3, step=107	smooth = 0.455848	cost = 0.381750	acc = 0.906250
+worker_index: 3, step=108	smooth = 0.427065	cost = 0.168023	acc = 0.937500
+worker_index: 3, step=109	smooth = 0.396924	cost = 0.125658	acc = 0.984375
+worker_index: 3, step=110	smooth = 0.389644	cost = 0.324123	acc = 0.953125
+worker_index: 3, step=111	smooth = 0.370537	cost = 0.198574	acc = 0.953125
+worker_index: 3, step=112	smooth = 0.365981	cost = 0.324979	acc = 0.890625
+worker_index: 3, step=113	smooth = 0.345654	cost = 0.162712	acc = 0.968750
+worker_index: 3, step=114	smooth = 0.318129	cost = 0.070395	acc = 0.984375
+worker_index: 3, step=115	smooth = 0.295401	cost = 0.090853	acc = 1.000000
+worker_index: 3, step=116	smooth = 0.303694	cost = 0.378334	acc = 0.890625
+worker_index: 3, step=117	smooth = 0.305321	cost = 0.319958	acc = 0.921875
+worker_index: 3, step=118	smooth = 0.291919	cost = 0.171300	acc = 0.968750
+worker_index: 3, step=119	smooth = 0.286494	cost = 0.237670	acc = 0.953125
+worker_index: 3, step=120	smooth = 0.291347	cost = 0.335028	acc = 0.875000
+worker_index: 3, step=121	smooth = 0.289080	cost = 0.268672	acc = 0.953125
+worker_index: 3, step=122	smooth = 0.280812	cost = 0.206408	acc = 0.906250
+worker_index: 3, step=123	smooth = 0.286172	cost = 0.334410	acc = 0.921875
+worker_index: 3, step=124	smooth = 0.285812	cost = 0.282566	acc = 0.906250
+worker_index: 3, step=125	smooth = 0.284850	cost = 0.276199	acc = 0.921875
+worker_index: 3, step=126	smooth = 0.291881	cost = 0.355155	acc = 0.921875
+worker_index: 3, step=127	smooth = 0.283841	cost = 0.211481	acc = 0.906250
+worker_index: 3, step=128	smooth = 0.271268	cost = 0.158114	acc = 0.953125
+worker_index: 3, step=129	smooth = 0.285827	cost = 0.416855	acc = 0.875000
+worker_index: 3, step=130	smooth = 0.293132	cost = 0.358876	acc = 0.859375
+worker_index: 3, step=131	smooth = 0.302290	cost = 0.384716	acc = 0.906250
+worker_index: 3, step=132	smooth = 0.288002	cost = 0.159412	acc = 0.968750
+worker_index: 3, step=133	smooth = 0.316307	cost = 0.571051	acc = 0.859375
+worker_index: 3, step=134	smooth = 0.320289	cost = 0.356128	acc = 0.875000
+worker_index: 3, step=135	smooth = 0.310814	cost = 0.225540	acc = 0.937500
+worker_index: 3, step=136	smooth = 0.292398	cost = 0.126653	acc = 0.968750
+worker_index: 3, step=137	smooth = 0.285439	cost = 0.222802	acc = 0.921875
+worker_index: 3, step=138	smooth = 0.277451	cost = 0.205562	acc = 0.906250
+worker_index: 3, step=139	smooth = 0.276951	cost = 0.272455	acc = 0.937500
+worker_index: 3, step=140	smooth = 0.284382	cost = 0.351257	acc = 0.843750
+worker_index: 3, step=141	smooth = 0.297365	cost = 0.414215	acc = 0.843750
+worker_index: 3, step=142	smooth = 0.297806	cost = 0.301769	acc = 0.937500
+worker_index: 3, step=143	smooth = 0.315200	cost = 0.471750	acc = 0.859375
+worker_index: 3, step=144	smooth = 0.312980	cost = 0.292999	acc = 0.890625
+worker_index: 3, step=145	smooth = 0.305921	cost = 0.242388	acc = 0.906250
+worker_index: 3, step=146	smooth = 0.303847	cost = 0.285186	acc = 0.953125
+worker_index: 3, step=147	smooth = 0.316366	cost = 0.429036	acc = 0.828125
+worker_index: 3, step=148	smooth = 0.317493	cost = 0.327636	acc = 0.921875
+worker_index: 3, step=149	smooth = 0.313409	cost = 0.276652	acc = 0.921875
+worker_index: 3, step=150	smooth = 0.336128	cost = 0.540603	acc = 0.843750
+worker_index: 3, step=151	smooth = 0.323267	cost = 0.207518	acc = 0.937500
+worker_index: 3, step=152	smooth = 0.318065	cost = 0.271246	acc = 0.953125
+worker_index: 3, step=153	smooth = 0.317691	cost = 0.314326	acc = 0.937500
+worker_index: 3, step=154	smooth = 0.304959	cost = 0.190364	acc = 0.953125
+worker_index: 3, step=155	smooth = 0.294030	cost = 0.195669	acc = 0.968750
+worker_index: 3, step=156	smooth = 0.289865	cost = 0.252385	acc = 0.921875
+worker_index: 3, step=157	smooth = 0.286704	cost = 0.258252	acc = 0.953125
+worker_index: 3, step=158	smooth = 0.278308	cost = 0.202747	acc = 0.937500
+worker_index: 3, step=159	smooth = 0.282447	cost = 0.319697	acc = 0.906250
+worker_index: 3, step=160	smooth = 0.281524	cost = 0.273216	acc = 0.890625
+worker_index: 3, step=161	smooth = 0.285903	cost = 0.325313	acc = 0.890625
+worker_index: 3, step=162	smooth = 0.301841	cost = 0.445289	acc = 0.843750
+worker_index: 3, step=163	smooth = 0.298503	cost = 0.268457	acc = 0.937500
+worker_index: 3, step=164	smooth = 0.294407	cost = 0.257545	acc = 0.906250
+worker_index: 3, step=165	smooth = 0.286967	cost = 0.220002	acc = 0.921875
+worker_index: 3, step=166	smooth = 0.275118	cost = 0.168479	acc = 0.953125
+worker_index: 3, step=167	smooth = 0.281011	cost = 0.334047	acc = 0.906250
+worker_index: 3, step=168	smooth = 0.286565	cost = 0.336553	acc = 0.875000
+worker_index: 3, step=169	smooth = 0.278720	cost = 0.208110	acc = 0.906250
+worker_index: 3, step=170	smooth = 0.284423	cost = 0.335750	acc = 0.890625
+worker_index: 3, step=171	smooth = 0.266949	cost = 0.109689	acc = 0.968750
+worker_index: 3, step=172	smooth = 0.254583	cost = 0.143291	acc = 0.937500
+worker_index: 3, step=173	smooth = 0.256582	cost = 0.274574	acc = 0.937500
+worker_index: 3, step=174	smooth = 0.271843	cost = 0.409183	acc = 0.875000
+worker_index: 3, step=175	smooth = 0.258822	cost = 0.141635	acc = 0.953125
+worker_index: 3, step=176	smooth = 0.274417	cost = 0.414777	acc = 0.906250
+worker_index: 3, step=177	smooth = 0.283633	cost = 0.366570	acc = 0.875000
+worker_index: 3, step=178	smooth = 0.289426	cost = 0.341566	acc = 0.890625
+worker_index: 3, step=179	smooth = 0.314437	cost = 0.539532	acc = 0.796875
+worker_index: 3, step=180	smooth = 0.316784	cost = 0.337911	acc = 0.921875
+worker_index: 3, step=181	smooth = 0.323554	cost = 0.384485	acc = 0.828125
+worker_index: 3, step=182	smooth = 0.309898	cost = 0.186991	acc = 0.921875
+worker_index: 3, step=183	smooth = 0.312120	cost = 0.332122	acc = 0.921875
+worker_index: 3, step=184	smooth = 0.292251	cost = 0.113426	acc = 0.953125
+worker_index: 3, step=185	smooth = 0.298915	cost = 0.358895	acc = 0.890625
+worker_index: 3, step=186	smooth = 0.304044	cost = 0.350202	acc = 0.843750
+worker_index: 3, step=187	smooth = 0.294062	cost = 0.204223	acc = 0.953125
+worker_index: 3, step=188	smooth = 0.288488	cost = 0.238320	acc = 0.921875
+worker_index: 3, step=189	smooth = 0.289717	cost = 0.300784	acc = 0.875000
+worker_index: 3, step=190	smooth = 0.293441	cost = 0.326950	acc = 0.890625
+worker_index: 3, step=191	smooth = 0.300225	cost = 0.361285	acc = 0.859375
+worker_index: 3, step=192	smooth = 0.280638	cost = 0.104358	acc = 0.968750
+worker_index: 3, step=193	smooth = 0.275375	cost = 0.228001	acc = 0.937500
+worker_index: 3, step=194	smooth = 0.266101	cost = 0.182642	acc = 0.953125
+worker_index: 3, step=195	smooth = 0.270287	cost = 0.307956	acc = 0.921875
+worker_index: 3, step=196	smooth = 0.268888	cost = 0.256295	acc = 0.921875
+worker_index: 3, step=197	smooth = 0.263933	cost = 0.219340	acc = 0.906250
+worker_index: 3, step=198	smooth = 0.266098	cost = 0.285580	acc = 0.859375
+worker_index: 3, step=199	smooth = 0.266283	cost = 0.267947	acc = 0.906250
+worker_index: 3, step=200	smooth = 0.257849	cost = 0.181946	acc = 0.937500
+worker_index: 3, step=201	smooth = 0.264429	cost = 0.323654	acc = 0.906250
+worker_index: 3, step=202	smooth = 0.261485	cost = 0.234987	acc = 0.937500
+worker_index: 3, step=203	smooth = 0.261982	cost = 0.266449	acc = 0.906250
+worker_index: 3, step=204	smooth = 0.263633	cost = 0.278496	acc = 0.921875
+worker_index: 3, step=205	smooth = 0.253799	cost = 0.165295	acc = 0.937500
+worker_index: 3, step=206	smooth = 0.259316	cost = 0.308969	acc = 0.937500
+worker_index: 3, step=207	smooth = 0.263608	cost = 0.302236	acc = 0.906250
+worker_index: 3, step=208	smooth = 0.277151	cost = 0.399036	acc = 0.843750
+worker_index: 3, step=209	smooth = 0.279990	cost = 0.305542	acc = 0.921875
+worker_index: 3, step=210	smooth = 0.272517	cost = 0.205260	acc = 0.921875
+worker_index: 3, step=211	smooth = 0.259944	cost = 0.146786	acc = 0.953125
+worker_index: 3, step=212	smooth = 0.251139	cost = 0.171896	acc = 0.937500
+worker_index: 3, step=213	smooth = 0.244293	cost = 0.182674	acc = 0.968750
+worker_index: 3, step=214	smooth = 0.260411	cost = 0.405477	acc = 0.843750
+worker_index: 3, step=215	smooth = 0.251676	cost = 0.173064	acc = 0.890625
+worker_index: 3, step=216	smooth = 0.244388	cost = 0.178791	acc = 0.921875
+worker_index: 3, step=217	smooth = 0.233972	cost = 0.140229	acc = 0.984375
+worker_index: 3, step=218	smooth = 0.240903	cost = 0.303281	acc = 0.921875
+worker_index: 3, step=219	smooth = 0.253798	cost = 0.369858	acc = 0.906250
+worker_index: 3, step=220	smooth = 0.239097	cost = 0.106787	acc = 0.984375
+worker_index: 3, step=221	smooth = 0.234403	cost = 0.192154	acc = 0.953125
+worker_index: 3, step=222	smooth = 0.236218	cost = 0.252555	acc = 0.906250
+worker_index: 3, step=223	smooth = 0.250857	cost = 0.382606	acc = 0.890625
+worker_index: 3, step=224	smooth = 0.243966	cost = 0.181947	acc = 0.921875
+worker_index: 3, step=225	smooth = 0.227584	cost = 0.080151	acc = 1.000000
+worker_index: 3, step=226	smooth = 0.249350	cost = 0.445244	acc = 0.906250
+worker_index: 3, step=227	smooth = 0.243665	cost = 0.192499	acc = 0.921875
+worker_index: 3, step=228	smooth = 0.246327	cost = 0.270281	acc = 0.890625
+worker_index: 3, step=229	smooth = 0.230827	cost = 0.091326	acc = 0.984375
+worker_index: 3, step=230	smooth = 0.218371	cost = 0.106269	acc = 0.953125
+worker_index: 3, step=231	smooth = 0.200502	cost = 0.039683	acc = 1.000000
+worker_index: 3, step=232	smooth = 0.184920	cost = 0.044680	acc = 0.984375
+worker_index: 3, step=233	smooth = 0.181797	cost = 0.153696	acc = 0.984375
+worker_index: 3, step=234	smooth = 0.204764	cost = 0.411466	acc = 0.859375
+worker_index: 3, step=235	smooth = 0.234106	cost = 0.498180	acc = 0.812500
+worker_index: 3, step=236	smooth = 0.230883	cost = 0.201874	acc = 0.953125
+worker_index: 3, step=237	smooth = 0.218669	cost = 0.108741	acc = 0.968750
+worker_index: 3, step=238	smooth = 0.225824	cost = 0.290224	acc = 0.921875
+worker_index: 3, step=239	smooth = 0.211473	cost = 0.082310	acc = 1.000000
+worker_index: 3, step=240	smooth = 0.225944	cost = 0.356188	acc = 0.906250
+worker_index: 3, step=241	smooth = 0.225156	cost = 0.218064	acc = 0.921875
+worker_index: 3, step=242	smooth = 0.215795	cost = 0.131544	acc = 0.968750
+worker_index: 3, step=243	smooth = 0.211859	cost = 0.176429	acc = 0.937500
+worker_index: 3, step=244	smooth = 0.210808	cost = 0.201357	acc = 0.921875
+worker_index: 3, step=245	smooth = 0.205076	cost = 0.153489	acc = 0.968750
+worker_index: 3, step=246	smooth = 0.193423	cost = 0.088546	acc = 0.984375
+worker_index: 3, step=247	smooth = 0.215270	cost = 0.411894	acc = 0.890625
+worker_index: 3, step=248	smooth = 0.213197	cost = 0.194539	acc = 0.921875
+worker_index: 3, step=249	smooth = 0.215124	cost = 0.232465	acc = 0.937500
+worker_index: 3, step=250	smooth = 0.222712	cost = 0.291001	acc = 0.906250
+worker_index: 3, step=251	smooth = 0.219013	cost = 0.185726	acc = 0.953125
+worker_index: 3, step=252	smooth = 0.203811	cost = 0.066994	acc = 0.968750
+worker_index: 3, step=253	smooth = 0.201843	cost = 0.184127	acc = 0.937500
+worker_index: 3, step=254	smooth = 0.205370	cost = 0.237110	acc = 0.937500
+worker_index: 3, step=255	smooth = 0.197632	cost = 0.127993	acc = 0.953125
+worker_index: 3, step=256	smooth = 0.198872	cost = 0.210037	acc = 0.906250
+worker_index: 3, step=257	smooth = 0.206910	cost = 0.279245	acc = 0.921875
+worker_index: 3, step=258	smooth = 0.204570	cost = 0.183509	acc = 0.953125
+worker_index: 3, step=259	smooth = 0.203559	cost = 0.194469	acc = 0.937500
+worker_index: 3, step=260	smooth = 0.201146	cost = 0.179421	acc = 0.937500
+worker_index: 3, step=261	smooth = 0.195875	cost = 0.148441	acc = 0.937500
+worker_index: 3, step=262	smooth = 0.191511	cost = 0.152239	acc = 0.968750
+worker_index: 3, step=263	smooth = 0.185645	cost = 0.132851	acc = 0.968750
+worker_index: 3, step=264	smooth = 0.201987	cost = 0.349064	acc = 0.921875
+worker_index: 3, step=265	smooth = 0.199739	cost = 0.179504	acc = 0.968750
+worker_index: 3, step=266	smooth = 0.207114	cost = 0.273491	acc = 0.921875
+worker_index: 3, step=267	smooth = 0.208447	cost = 0.220447	acc = 0.937500
+worker_index: 3, step=268	smooth = 0.207108	cost = 0.195051	acc = 0.921875
+worker_index: 3, step=269	smooth = 0.200028	cost = 0.136313	acc = 0.968750
+worker_index: 3, step=270	smooth = 0.192474	cost = 0.124487	acc = 0.968750
+worker_index: 3, step=271	smooth = 0.192255	cost = 0.190280	acc = 0.953125
+worker_index: 3, step=272	smooth = 0.194219	cost = 0.211902	acc = 0.921875
+worker_index: 3, step=273	smooth = 0.197339	cost = 0.225418	acc = 0.953125
+worker_index: 3, step=274	smooth = 0.203208	cost = 0.256024	acc = 0.937500
+worker_index: 3, step=275	smooth = 0.215275	cost = 0.323877	acc = 0.921875
+worker_index: 3, step=276	smooth = 0.221012	cost = 0.272645	acc = 0.906250
+worker_index: 3, step=277	smooth = 0.234055	cost = 0.351446	acc = 0.875000
+worker_index: 3, step=278	smooth = 0.230542	cost = 0.198921	acc = 0.937500
+worker_index: 3, step=279	smooth = 0.227752	cost = 0.202642	acc = 0.937500
+worker_index: 3, step=280	smooth = 0.216326	cost = 0.113497	acc = 0.937500
+worker_index: 3, step=281	smooth = 0.212116	cost = 0.174227	acc = 0.937500
+worker_index: 3, step=282	smooth = 0.214811	cost = 0.239062	acc = 0.937500
+worker_index: 3, step=283	smooth = 0.208320	cost = 0.149904	acc = 0.953125
+worker_index: 3, step=284	smooth = 0.198081	cost = 0.105928	acc = 0.953125
+worker_index: 3, step=285	smooth = 0.217665	cost = 0.393918	acc = 0.859375
+worker_index: 3, step=286	smooth = 0.231338	cost = 0.354399	acc = 0.937500
+worker_index: 3, step=287	smooth = 0.229248	cost = 0.210434	acc = 0.953125
+worker_index: 3, step=288	smooth = 0.218621	cost = 0.122978	acc = 0.937500
+worker_index: 3, step=289	smooth = 0.215482	cost = 0.187234	acc = 0.921875
+worker_index: 3, step=290	smooth = 0.208568	cost = 0.146336	acc = 0.968750
+worker_index: 3, step=291	smooth = 0.200754	cost = 0.130433	acc = 0.953125
+worker_index: 3, step=292	smooth = 0.194766	cost = 0.140876	acc = 0.953125
+worker_index: 3, step=293	smooth = 0.192332	cost = 0.170422	acc = 0.906250
+worker_index: 3, step=294	smooth = 0.231554	cost = 0.584549	acc = 0.796875
+worker_index: 3, step=295	smooth = 0.230317	cost = 0.219190	acc = 0.906250
+worker_index: 3, step=296	smooth = 0.239058	cost = 0.317723	acc = 0.890625
+worker_index: 3, step=297	smooth = 0.235055	cost = 0.199027	acc = 0.953125
+worker_index: 3, step=298	smooth = 0.238084	cost = 0.265348	acc = 0.906250
+worker_index: 3, step=299	smooth = 0.222601	cost = 0.083256	acc = 0.953125
+worker_index: 3, step=300	smooth = 0.226918	cost = 0.265774	acc = 0.921875
+step63	all_loss0.155767	all_ccc=60.000000	rate0.952381
+step127	all_loss0.292027	all_ccc=122.000000	rate0.960630
+step191	all_loss0.387898	all_ccc=185.000000	rate0.968586
+step255	all_loss0.599731	all_ccc=244.000000	rate0.956863
+step319	all_loss0.789633	all_ccc=304.000000	rate0.952978
+step383	all_loss1.049455	all_ccc=364.000000	rate0.950392
+step447	all_loss1.235815	all_ccc=426.000000	rate0.953020
+step511	all_loss1.512611	all_ccc=483.000000	rate0.945205
+step575	all_loss1.790915	all_ccc=540.000000	rate0.939130
+step639	all_loss2.033762	all_ccc=598.000000	rate0.935837
+step703	all_loss2.253527	all_ccc=658.000000	rate0.935989
+step767	all_loss2.492581	all_ccc=718.000000	rate0.936115
+step831	all_loss2.571737	all_ccc=781.000000	rate0.939832
+step895	all_loss2.742030	all_ccc=841.000000	rate0.939665
+step959	all_loss2.959197	all_ccc=900.000000	rate0.938478
+step1023	all_loss3.198638	all_ccc=959.000000	rate0.937439
+step1087	all_loss3.423436	all_ccc=1016.000000	rate0.934683
+step1151	all_loss3.705988	all_ccc=1075.000000	rate0.933970
+step1215	all_loss4.005045	all_ccc=1129.000000	rate0.929218
+step1279	all_loss4.524280	all_ccc=1184.000000	rate0.925723
+step1343	all_loss4.924615	all_ccc=1240.000000	rate0.923306
+step1407	all_loss5.091086	all_ccc=1301.000000	rate0.924662
+step1471	all_loss5.369812	all_ccc=1359.000000	rate0.923861
+step1535	all_loss5.712911	all_ccc=1417.000000	rate0.923127
+step1599	all_loss5.974083	all_ccc=1477.000000	rate0.923702
+step1663	all_loss6.197877	all_ccc=1537.000000	rate0.924233
+step1727	all_loss6.505650	all_ccc=1596.000000	rate0.924146
+step1791	all_loss6.893617	all_ccc=1653.000000	rate0.922948
+step1855	all_loss7.025523	all_ccc=1715.000000	rate0.924528
+step1919	all_loss7.314356	all_ccc=1773.000000	rate0.923919
+step1983	all_loss7.607642	all_ccc=1830.000000	rate0.922844
+step2047	all_loss8.029223	all_ccc=1887.000000	rate0.921837
+step2111	all_loss8.310781	all_ccc=1945.000000	rate0.921364
+step2175	all_loss8.619626	all_ccc=2003.000000	rate0.920920
+step2239	all_loss8.965672	all_ccc=2062.000000	rate0.920947
+step2303	all_loss9.258001	all_ccc=2122.000000	rate0.921407
+step2367	all_loss9.395079	all_ccc=2185.000000	rate0.923109
+step2431	all_loss9.797570	all_ccc=2241.000000	rate0.921843
+step2495	all_loss9.938621	all_ccc=2303.000000	rate0.923046
+step2559	all_loss10.121517	all_ccc=2363.000000	rate0.923408
+step2623	all_loss10.483635	all_ccc=2418.000000	rate0.921845
+step2687	all_loss10.731649	all_ccc=2478.000000	rate0.922218
+step2751	all_loss10.873407	all_ccc=2541.000000	rate0.923664
+step2815	all_loss11.057103	all_ccc=2599.000000	rate0.923268
+step2879	all_loss11.191217	all_ccc=2660.000000	rate0.923932
+step2943	all_loss11.468077	all_ccc=2719.000000	rate0.923887
+step3007	all_loss11.691198	all_ccc=2777.000000	rate0.923512
+step3071	all_loss11.812917	all_ccc=2840.000000	rate0.924780
+step3135	all_loss12.122175	all_ccc=2898.000000	rate0.924402
+step3199	all_loss12.345085	all_ccc=2955.000000	rate0.923726
+step3263	all_loss12.574923	all_ccc=3016.000000	rate0.924303
+step3327	all_loss12.706877	all_ccc=3078.000000	rate0.925158
+step3391	all_loss12.860142	all_ccc=3140.000000	rate0.925981
+step3455	all_loss12.954126	all_ccc=3204.000000	rate0.927352
+step3519	all_loss13.119430	all_ccc=3266.000000	rate0.928105
+step3583	all_loss13.514434	all_ccc=3323.000000	rate0.927435
+step3647	all_loss13.746647	all_ccc=3383.000000	rate0.927612
+step3711	all_loss13.898417	all_ccc=3444.000000	rate0.928052
+step3775	all_loss14.276224	all_ccc=3502.000000	rate0.927682
+step3839	all_loss14.787485	all_ccc=3554.000000	rate0.925762
+step3903	all_loss15.176632	all_ccc=3608.000000	rate0.924417
+step3967	all_loss15.561567	all_ccc=3666.000000	rate0.924124
+step4031	all_loss15.776001	all_ccc=3725.000000	rate0.924088
+step4095	all_loss16.100365	all_ccc=3784.000000	rate0.924054
+step4159	all_loss16.270693	all_ccc=3844.000000	rate0.924261
+step4223	all_loss16.623777	all_ccc=3903.000000	rate0.924224
+step4287	all_loss16.865292	all_ccc=3963.000000	rate0.924423
+step4351	all_loss17.221918	all_ccc=4020.000000	rate0.923926
+step4415	all_loss17.413715	all_ccc=4081.000000	rate0.924349
+step4479	all_loss17.654713	all_ccc=4139.000000	rate0.924090
+step4543	all_loss17.953865	all_ccc=4196.000000	rate0.923619
+step4607	all_loss18.168240	all_ccc=4256.000000	rate0.923812
+step4671	all_loss18.366890	all_ccc=4316.000000	rate0.923999
+step4735	all_loss18.513680	all_ccc=4377.000000	rate0.924393
+step4799	all_loss18.699566	all_ccc=4436.000000	rate0.924359
+step4863	all_loss19.003042	all_ccc=4496.000000	rate0.924532
+step4927	all_loss19.323303	all_ccc=4553.000000	rate0.924092
+step4991	all_loss19.587406	all_ccc=4613.000000	rate0.924264
+step5055	all_loss19.680773	all_ccc=4675.000000	rate0.924827
+step5119	all_loss19.797031	all_ccc=4736.000000	rate0.925181
+step5183	all_loss19.931782	all_ccc=4796.000000	rate0.925333
+step5247	all_loss20.030552	all_ccc=4857.000000	rate0.925672
+step5311	all_loss20.088697	all_ccc=4921.000000	rate0.926568
+step5375	all_loss20.174082	all_ccc=4984.000000	rate0.927256
+step5439	all_loss20.224728	all_ccc=5047.000000	rate0.927928
+step5503	all_loss20.272108	all_ccc=5109.000000	rate0.928403
+step5567	all_loss20.311781	all_ccc=5173.000000	rate0.929226
+step5631	all_loss20.445641	all_ccc=5233.000000	rate0.929320
+step5695	all_loss20.634233	all_ccc=5295.000000	rate0.929763
+step5759	all_loss20.881252	all_ccc=5355.000000	rate0.929849
+step5823	all_loss20.925329	all_ccc=5419.000000	rate0.930620
+step5887	all_loss21.024727	all_ccc=5482.000000	rate0.931204
+step5951	all_loss21.330616	all_ccc=5539.000000	rate0.930768
+step6015	all_loss21.601719	all_ccc=5599.000000	rate0.930840
+step6079	all_loss21.841866	all_ccc=5657.000000	rate0.930581
+step6143	all_loss22.047729	all_ccc=5717.000000	rate0.930653
+step6207	all_loss22.311010	all_ccc=5777.000000	rate0.930723
+step6271	all_loss22.338501	all_ccc=5840.000000	rate0.931271
+step6335	all_loss22.370358	all_ccc=5904.000000	rate0.931965
+step6399	all_loss22.519051	all_ccc=5964.000000	rate0.932021
+step6463	all_loss22.625061	all_ccc=6025.000000	rate0.932230
+step6527	all_loss22.772118	all_ccc=6088.000000	rate0.932741
+step6591	all_loss23.050814	all_ccc=6145.000000	rate0.932332
+step6655	all_loss23.450281	all_ccc=6201.000000	rate0.931781
+step6719	all_loss23.537088	all_ccc=6264.000000	rate0.932282
+step6783	all_loss23.724215	all_ccc=6324.000000	rate0.932331
+step6847	all_loss23.845140	all_ccc=6385.000000	rate0.932525
+step6911	all_loss23.927269	all_ccc=6448.000000	rate0.933005
+step6975	all_loss23.976776	all_ccc=6512.000000	rate0.933620
+step7039	all_loss24.029802	all_ccc=6575.000000	rate0.934082
+step7103	all_loss24.084665	all_ccc=6638.000000	rate0.934535
+step7167	all_loss24.131695	all_ccc=6701.000000	rate0.934980
+step7231	all_loss24.231936	all_ccc=6763.000000	rate0.935279
+step7295	all_loss24.320431	all_ccc=6826.000000	rate0.935709
+step7359	all_loss24.357529	all_ccc=6889.000000	rate0.936133
+step7423	all_loss24.394188	all_ccc=6953.000000	rate0.936683
+step7487	all_loss24.635612	all_ccc=7014.000000	rate0.936824
+step7551	all_loss24.747869	all_ccc=7077.000000	rate0.937227
+step7615	all_loss24.797550	all_ccc=7141.000000	rate0.937754
+step7679	all_loss24.868118	all_ccc=7205.000000	rate0.938273
+step7743	all_loss24.922081	all_ccc=7269.000000	rate0.938783
+step7807	all_loss25.041195	all_ccc=7331.000000	rate0.939029
+step7871	all_loss25.232227	all_ccc=7390.000000	rate0.938890
+step7935	all_loss25.443174	all_ccc=7449.000000	rate0.938752
+step7999	all_loss25.502192	all_ccc=7512.000000	rate0.939117
+step8063	all_loss25.583460	all_ccc=7574.000000	rate0.939353
+step8127	all_loss25.730495	all_ccc=7634.000000	rate0.939338
+step8191	all_loss25.781324	all_ccc=7697.000000	rate0.939690
+step8255	all_loss25.842697	all_ccc=7760.000000	rate0.940036
+step8319	all_loss25.999701	all_ccc=7823.000000	rate0.940377
+step8383	all_loss26.126963	all_ccc=7885.000000	rate0.940594
+step8447	all_loss26.263922	all_ccc=7946.000000	rate0.940689
+step8511	all_loss26.318420	all_ccc=8010.000000	rate0.941135
+step8575	all_loss26.406689	all_ccc=8072.000000	rate0.941341
+step8639	all_loss26.427759	all_ccc=8136.000000	rate0.941776
+step8703	all_loss26.449776	all_ccc=8200.000000	rate0.942204
+step8767	all_loss26.456097	all_ccc=8264.000000	rate0.942626
+step8831	all_loss26.467768	all_ccc=8328.000000	rate0.943042
+step8895	all_loss26.506205	all_ccc=8391.000000	rate0.943339
+step8959	all_loss26.522871	all_ccc=8455.000000	rate0.943744
+step9023	all_loss26.763937	all_ccc=8514.000000	rate0.943589
+step9087	all_loss26.986620	all_ccc=8573.000000	rate0.943436
+step9151	all_loss27.023218	all_ccc=8637.000000	rate0.943831
+step9215	all_loss27.080139	all_ccc=8701.000000	rate0.944221
+step9279	all_loss27.111519	all_ccc=8765.000000	rate0.944606
+step9343	all_loss27.192335	all_ccc=8827.000000	rate0.944771
+step9407	all_loss27.219097	all_ccc=8891.000000	rate0.945147
+step9471	all_loss27.289938	all_ccc=8953.000000	rate0.945307
+step9535	all_loss27.366636	all_ccc=9015.000000	rate0.945464
+step9599	all_loss27.491882	all_ccc=9077.000000	rate0.945619
+step9663	all_loss27.694122	all_ccc=9136.000000	rate0.945462
+step9727	all_loss27.898521	all_ccc=9194.000000	rate0.945204
+step9791	all_loss28.604055	all_ccc=9245.000000	rate0.944235
+step9855	all_loss28.795151	all_ccc=9306.000000	rate0.944292
+step9919	all_loss29.160606	all_ccc=9359.000000	rate0.943543
+step9983	all_loss29.493340	all_ccc=9417.000000	rate0.943304

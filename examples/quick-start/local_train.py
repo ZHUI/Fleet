@@ -23,7 +23,7 @@ input_y = fluid.layers.data(name="y", shape=[1], dtype='int64')
 
 cost, pre = mlp(input_x, input_y)
 test_program = fluid.default_main_program().clone(for_test=True)
-optimizer = fluid.optimizer.SGD(learning_rate=0.01)
+optimizer = fluid.optimizer.SGD(learning_rate=0.015*8)
 optimizer.minimize(cost)
 place = fluid.CPUPlace()
 
